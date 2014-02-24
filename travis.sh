@@ -3,6 +3,9 @@ echo "View UI failures (if any) here http://builds-artifacts.piwik.org/ui-tests.
 echo "If the new screenshots are valid, then you can copy them over to tests/PHPUnit/UI/expected-ui-screenshots/."
 echo ""
 
+echo `pwd`
+
+ls UI
 cd UI
 git status
 cd ..
