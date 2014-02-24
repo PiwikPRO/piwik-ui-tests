@@ -1,0 +1,6 @@
+processed-ui-screenshots/*.png
+processed-ui-screenshots/**/*.png
+screenshot-diffs/*.png
+screenshot-diffs/*.html
+.idea/*
+php_errors.log

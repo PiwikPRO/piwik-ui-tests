@@ -1,0 +1,50 @@
+language: php
+
+# We want to test against PHP 5.3/5.4/5.5
+php:
+  - 5.5
+  #- 5.4
+  #- 5.3
+
+# Separate different test suites
+env:
+  matrix:
+    - TEST_DIR=UI MYSQL_ADAPTER=PDO_MYSQL
+  global:
+    secure: "hP311AESUk7TDp8qS8YgM6PCaY8lSQFBbW+d/jqbeyJCW0FJez7E2kpyu/Yf\nlbLpq63bj9Cz/psprEeo02GQvSjaHxSdJFY7uxUDszieFIhrAoTPYkDrpblb\nUyVGH/fOTl8NkukgW8TsF+po/4sQnqLVAeWyUOuSY6M7ZRjBdSQ="
+
+script: ./travis.sh
+
+before_script:
+  - sudo apt-get install -y imagemagick
+  - ./getpiwik.sh
+  - cd ../piwik
+  - ls
+  - composer install
+  - uname -a
+  - date
+  - phantomjs --version
+  - php -r "var_dump(gd_info());"
+  - mysql -e 'create database piwik_tests;'
+  - ./tests/travis/prepare.sh
+  - ./tests/travis/setup_webserver.sh
+  - cd tests/PHPUnit
+
+after_script:
+  - cat /var/log/nginx/error.log
+  - cat $TRAVIS_BUILD_DIR/../piwik/tmp/php-fpm.log
+  - cat $TRAVIS_BUILD_DIR/../piwik/tmp/logs/piwik.log
+  - cd $TRAVIS_BUILD_DIR/../piwik
+  - ./tests/travis/upload_artifacts.sh
+
+notifications:
+  irc:
+    skip_join: true
+    on_success: change
+    channels:
+      - "irc.freenode.org#piwik-dev"
+    template:
+      - "%{repository} (%{commit}) : %{message} %{foo} "
+      - "UI Screenshot Build details: %{build_url}"
+  email:
+    - piwik-builds@piwik.org
