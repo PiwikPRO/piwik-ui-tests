@@ -127,7 +127,7 @@ testFiles.forEach(function (path) {
     require('./' + path);
 });
 
-// make all necessary directories exist (symlinks handled by PHP since phantomjs can't create any)
+// make sure all necessary directories exist (symlinks handled by PHP since phantomjs can't create any)
 var dirsToCreate = [
     config.expectedScreenshotsDir,
     config.processedScreenshotsDir,
