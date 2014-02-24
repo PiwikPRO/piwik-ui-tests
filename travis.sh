@@ -5,8 +5,8 @@ echo ""
 
 ls
 
-if [ -f ./UI/run-tests.js ]; then
-    phantomjs ./UI/run-tests.js
+if [ -f ./run-tests.js ]; then
+    phantomjs ./run-tests.js
 else
     phpunit UI
 fi
