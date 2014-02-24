@@ -13,7 +13,7 @@ env:
   global:
     secure: "hP311AESUk7TDp8qS8YgM6PCaY8lSQFBbW+d/jqbeyJCW0FJez7E2kpyu/Yf\nlbLpq63bj9Cz/psprEeo02GQvSjaHxSdJFY7uxUDszieFIhrAoTPYkDrpblb\nUyVGH/fOTl8NkukgW8TsF+po/4sQnqLVAeWyUOuSY6M7ZRjBdSQ="
 
-script: ./travis.sh
+script: ./UI/travis.sh
 
 before_script:
   - sudo apt-get install -y imagemagick
