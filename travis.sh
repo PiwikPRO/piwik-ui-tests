@@ -5,11 +5,6 @@ echo ""
 
 echo `pwd`
 
-ls UI
-cd UI
-git status
-cd ..
-
 if [ -f ./UI/run-tests.js ]; then
     phantomjs ./UI/run-tests.js
 else
