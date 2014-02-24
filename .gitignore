@@ -1,6 +1,8 @@
 processed-ui-screenshots/*.png
 processed-ui-screenshots/**/*.png
+processed-ui-screenshots
 screenshot-diffs/*.png
 screenshot-diffs/*.html
+screenshot-diffs
 .idea/*
 php_errors.log
