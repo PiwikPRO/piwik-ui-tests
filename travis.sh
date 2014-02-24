@@ -3,10 +3,10 @@ echo "View UI failures (if any) here http://builds-artifacts.piwik.org/ui-tests.
 echo "If the new screenshots are valid, then you can copy them over to tests/PHPUnit/UI/expected-ui-screenshots/."
 echo ""
 
-ls
+ls UI
 
-if [ -f ./run-tests.js ]; then
-    phantomjs ./run-tests.js
+if [ -f ./UI/run-tests.js ]; then
+    phantomjs ./UI/run-tests.js
 else
     phpunit UI
 fi
