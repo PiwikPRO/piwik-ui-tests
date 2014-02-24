@@ -94,4 +94,4 @@ class ViewDataTableTest // extends UIUnitTest
     }
 }
 
-ViewDataTableTest::$fixture = new Test_Piwik_Fixture_OmniFixture();
+//ViewDataTableTest::$fixture = new Test_Piwik_Fixture_OmniFixture();

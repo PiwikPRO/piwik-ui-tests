@@ -70,4 +70,4 @@ class SegmentSelectorEditorTest // extends UIUnitTest
     }
 }
 
-SegmentSelectorEditorTest::$fixture = new Test_Piwik_Fixture_OmniFixture();
+//SegmentSelectorEditorTest::$fixture = new Test_Piwik_Fixture_OmniFixture();

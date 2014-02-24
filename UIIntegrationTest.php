@@ -225,4 +225,4 @@ class Test_Piwik_Integration_UIIntegrationTest // extends UITest
     }
 }
 
-Test_Piwik_Integration_UIIntegrationTest::$fixture = new Test_Piwik_Fixture_OmniFixture();
+//Test_Piwik_Integration_UIIntegrationTest::$fixture = new Test_Piwik_Fixture_OmniFixture();
