@@ -11,7 +11,7 @@
  * 
  * Uses slimerjs or phantomjs.
  */
-class ViewDataTableTest extends UIUnitTest
+class ViewDataTableTest // extends UIUnitTest
 {
     public static $fixture = null; // initialized below class definition    
 

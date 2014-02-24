@@ -14,7 +14,7 @@ use Piwik\Db;
  * Uses slimerjs or phantomjs.
  *
  */
-class Test_Piwik_Integration_UIIntegrationTest extends UITest
+class Test_Piwik_Integration_UIIntegrationTest // extends UITest
 {
     public static $fixture = null; // initialized below class definition
 

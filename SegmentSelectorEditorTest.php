@@ -11,7 +11,7 @@
  * 
  * Uses slimerjs or phantomjs.
  */
-class SegmentSelectorEditorTest extends UIUnitTest
+class SegmentSelectorEditorTest // extends UIUnitTest
 {
     public static $fixture = null; // initialized below class definition    
 
