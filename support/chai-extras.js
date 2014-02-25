@@ -22,15 +22,24 @@ chai.expect.screenshot = function (file, prefix) {
 
 // add capture assertion
 var pageRenderer = new PageRenderer(path.join(config.piwikUrl, "tests", "PHPUnit", "proxy"));
-chai.Assertion.addChainableMethod('capture', function (pageSetupFn, done) {
+chai.Assertion.addChainableMethod('capture', function () {
+    var compareAgainst = this.__flags['object'];
+    if (arguments.length == 2) {
+        var screenName = compareAgainst,
+            pageSetupFn = arguments[0],
+            done = arguments[1];
+    } else {
+        var screenName = runner.suite.title + "_" + arguments[0],
+            pageSetupFn = arguments[1],
+            done = arguments[2];
+    }
+
     if (!(done instanceof Function)) {
         throw new Error("No 'done' callback specified in capture assertion.");
     }
 
-    var screenName = this.__flags['object'],
-
-        screenshotFileName = screenName + '.png',
-        expectedScreenshotPath = path.join(config.expectedScreenshotsDir, screenshotFileName),
+    var screenshotFileName = screenName + '.png',
+        expectedScreenshotPath = path.join(config.expectedScreenshotsDir, compareAgainst + '.png'),
         processedScreenshotPath = path.join(config.processedScreenshotsDir, screenshotFileName);
 
     pageSetupFn(pageRenderer);

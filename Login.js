@@ -35,22 +35,22 @@ describe("Login", function () {
     });
 
     it("should redirect to Piwik when correct credentials are supplied", function (done) {
-        expect.screenshot("dashboard1", "UIIntegrationTest").to.be.capture(function (page) {
+        expect.screenshot("login_success").to.be.capture(function (page) {
             page.sendKeys("#login_form_login", "superUserLogin");
             page.sendKeys("#login_form_password", "superUserPass");
-            page.click("#login_form_submit");
+            page.click("#login_form_submit", 10000);
         }, done);
     });
 
     it("should redirect to login when logout link clicked", function (done) {
-        expect.screenshot("login_form").to.be.capture(function (page) {
+        expect.screenshot("login_form").to.be.capture("logout_form", function (page) {
             page.click("#topBars a:contains(Sign out)");
         }, done);
     });
 
     it("should display password reset form when forgot password link clicked", function (done) {
         expect.screenshot("forgot_password").to.be.capture(function (page) {
-            page.reload();
+            page.reload(10000);
             page.click("a#login_form_nav");
         }, done);
     });
@@ -60,7 +60,7 @@ describe("Login", function () {
             page.sendKeys("#reset_form_login", "superUserLogin");
             page.sendKeys("#reset_form_password", "superUserPass2");
             page.sendKeys("#reset_form_password_bis", "superUserPass2");
-            page.click("#reset_form_submit");
+            page.click("#reset_form_submit", 3000);
         }, done);
     });
 
@@ -75,11 +75,11 @@ describe("Login", function () {
     });
 
     it("should login successfully when new credentials used", function (done) {
-        expect.screenshot("dashboard1", "UIIntegrationTest").to.be.capture(function (page) {
+        expect.screenshot("login_success").to.be.capture("login_success_new_credentials", function (page) {
             page.load("");
             page.sendKeys("#login_form_login", "superUserLogin");
             page.sendKeys("#login_form_password", "superUserPass2");
-            page.click("#login_form_submit");
+            page.click("#login_form_submit", 10000);
         }, done);
     });
 });
