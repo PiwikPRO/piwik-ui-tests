@@ -10,12 +10,21 @@
 var VERBOSE = false;
 
 var PageRenderer = function (baseUrl) {
-    this.webpage = require('webpage').create();
+    this.webpage = null;
+
     this.queuedEvents = [];
     this.pageLogs = [];
     this.aborted = false;
     this.baseUrl = baseUrl;
+};
 
+PageRenderer.prototype._recreateWebPage = function () {
+    if (this.webpage) {
+        this.webpage.close();
+    }
+
+    this.webpage = require('webpage').create();
+    this.webpage.viewportSize = {width:1350, height:768};
     this._setupWebpageEvents();
 };
 
@@ -41,8 +50,13 @@ PageRenderer.prototype.reload = function (waitTime) {
     this.queuedEvents.push([this._reload, waitTime]);
 };
 
-PageRenderer.prototype.load = function (url) {
-    this.queuedEvents.push([this._load, 1000, url]);
+PageRenderer.prototype.load = function (url, waitTime) {
+    this.queuedEvents.push([this._load, waitTime || 1000, url]);
+};
+
+
+PageRenderer.prototype.evaluate = function (impl, waitTime) {
+    this.queuedEvents.push([this._evaluate, waitTime || 1000, impl]);
 };
 
 // event impl functions
@@ -77,7 +91,17 @@ PageRenderer.prototype._load = function (url, callback) {
         url = path.join(this.baseUrl, url);
     }
 
+    this._recreateWebPage(); // calling open a second time never calls the callback
     this.webpage.open(url, callback);
+};
+
+PageRenderer.prototype._evaluate = function (impl, callback) {
+    this.webpage.evaluate(function (js) {
+        var $ = window.jQuery;
+        eval("(" + js + ")();");
+    }, impl.toString());
+
+    callback();
 };
 
 PageRenderer.prototype._getPosition = function (selector) {
@@ -104,15 +128,12 @@ PageRenderer.prototype._getPosition = function (selector) {
     return pos;
 };
 
-PageRenderer.prototype.evaluate = function (impl) {
-    return this.webpage.evaluate(function (js) {
-        var $ = window.jQuery;
-        eval("(" + js + ")();");
-    }, impl.toString());
-};
-
 // main capturing function
 PageRenderer.prototype.capture = function (outputPath, callback) {
+    if (this.webpage === null) {
+        this._recreateWebPage();
+    }
+
     var events = this.queuedEvents;
     this.queuedEvents = [];
     this.pageLogs = [];
