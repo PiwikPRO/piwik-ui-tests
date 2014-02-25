@@ -12,8 +12,12 @@ var fs = require('fs'),
     AssertionError = chai.AssertionError;
 
 // add screenshot keyword to `expect`
-chai.expect.screenshot = function (file) {
-    return chai.expect(file);
+chai.expect.screenshot = function (file, prefix) {
+    if (!prefix) {
+        prefix = runner.suite.title; // note: runner is made global by run-tests.js
+    }
+
+    return chai.expect(prefix + '_' + file);
 };
 
 // add capture assertion
@@ -23,9 +27,7 @@ chai.Assertion.addChainableMethod('capture', function (pageSetupFn, done) {
         throw new Error("No 'done' callback specified in capture assertion.");
     }
 
-    var outputPrefix = runner.suite.title, // note: runner is made global by run-tests.js
-
-        screenName = outputPrefix + '_' + this.__flags['object'],
+    var screenName = this.__flags['object'],
 
         screenshotFileName = screenName + '.png',
         expectedScreenshotPath = path.join(config.expectedScreenshotsDir, screenshotFileName),
@@ -71,7 +73,7 @@ chai.Assertion.addChainableMethod('capture', function (pageSetupFn, done) {
                 if (pageRenderer.pageLogs.length) {
                     failureInfo += "\n\n" + indent + "Rendering logs:\n";
                     pageRenderer.pageLogs.forEach(function (message) {
-                        failureInfo += indent + "  " + message + "\n";
+                        failureInfo += indent + "  " + message.replace(/\n/g, "\n" + indent + "  ") + "\n";
                     });
                     failureInfo = failureInfo.substring(0, failureInfo.length - 1);
                 }

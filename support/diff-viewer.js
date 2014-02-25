@@ -124,16 +124,13 @@ DiffViewerGenerator.prototype.generateDiffs = function (callback, i) {
 
         var self = this;
         child.on("exit", function (code) {
-            if (code) {
-                console.error("\nERROR: Failed to generate diff.");
+            if (!code) {
+                entry.diffUrl = entry.name + '.png';
             }
-
-            entry.diffUrl = entry.name + '.png';
 
             self.generateDiffs(callback, i + 1);
         });
     } else {
-        console.log("Generating next");
         this.generateDiffs(callback, i + 1);
     }
 };

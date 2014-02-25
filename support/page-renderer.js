@@ -169,12 +169,19 @@ PageRenderer.prototype._executeEvents = function (events, callback, i) {
     var impl = evt.shift(),
         waitTime = evt.shift();
 
-    var self = this;
-    evt.push(function () {
-        self._waitForNextEvent(events, callback, i, waitTime);
-    });
+    var self = this,
+        waitForNextEvent = function () {
+            self._waitForNextEvent(events, callback, i, waitTime);
+        };
 
-    impl.apply(this, evt);
+    evt.push(waitForNextEvent);
+
+    try {
+        impl.apply(this, evt);
+    } catch (err) {
+        self.pageLogs.push("Error: " + err.message);
+        waitForNextEvent();
+    }
 };
 
 PageRenderer.prototype._getAjaxRequestCount = function () {

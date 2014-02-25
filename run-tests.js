@@ -73,6 +73,9 @@ var __dirname = phantom.libraryPath,
     mochaPath = path.join(testsLibDir, config.mocha, "mocha.js"),
     chaiPath = path.join(testsLibDir, config.chai, "chai.js");
 
+// TODO: organize this file more (move more code to support)
+var PIWIK_INCLUDE_PATH = path.join(__dirname, '..', '..', '..');
+
 // make sure script works wherever it's executed from
 fs.changeWorkingDirectory(__dirname);
 
@@ -100,6 +103,9 @@ require('./support/chai-extras');
 
 // parse command line arguments
 var options = require('./support/parse-cli-args').parse();
+
+var TestingEnvironment = require('./support/test-environment').TestingEnvironment,
+    testEnvironment = new TestingEnvironment();
 
 if (options['help']) {
     console.log("Usage: phantomjs run-tests.js [options] [test-files]");
