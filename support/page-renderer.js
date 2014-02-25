@@ -133,7 +133,7 @@ PageRenderer.prototype.capture = function (outputPath, callback) {
 
 PageRenderer.prototype.abort = function () {
     this.aborted = true;
-    this.webpage.abort();
+    this.webpage.stop();
 };
 
 PageRenderer.prototype._executeEvents = function (events, callback, i) {
@@ -162,10 +162,29 @@ PageRenderer.prototype._getAjaxRequestCount = function () {
     });
 };
 
+PageRenderer.prototype._getImageLoadingCount = function () {
+    return this.webpage.evaluate(function () {
+        var count = 0;
+
+        // check <img> elements
+        var imgs = document.getElementsByTagName('img');
+        for (var i = 0; i != imgs.length; ++i) {
+            var element = imgs.item(i);
+            if (element.complete === false) {
+                count = count + 1;
+            }
+        }
+
+        return count;
+    });
+};
+
 PageRenderer.prototype._waitForNextEvent = function (events, callback, i, waitTime) {
     var self = this;
     setTimeout(function () {
-        if (self._getAjaxRequestCount() == 0) {
+        if (self._getAjaxRequestCount() == 0
+            && self._getImageLoadingCount() == 0
+        ) {
             self._executeEvents(events, callback, i + 1);
         } else {
             self._waitForNextEvent(events, callback, i, waitTime);
@@ -207,6 +226,10 @@ PageRenderer.prototype._setupWebpageEvents = function () {
             self.pageLogs.push('Unable to load resource (#' + resourceError.id + 'URL:' + resourceError.url + ')');
             self.pageLogs.push('Error code: ' + resourceError.errorCode + '. Description: ' + resourceError.errorString);
         }
+    };
+
+    this.webpage.onConsoleMessage = function (message) {
+        self.pageLogs.push('Log: ' + message);
     };
 };
 
