@@ -258,13 +258,6 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
-    it('should load the widgetized all columns table correctly w/ processed column sorted', function (done) {
-        expect.screenshot('widgetize_all_columns_table_sort_processed').to.be.capture(function (page) {
-            page.load("?" + widgetizeParams + "&" + generalParams + "&moduleToWidgetize=UserCountry&actionToWidgetize=getCountry"
-                    + "&viewDataTable=tableAllColumns&filter_sort_column=bounce_rate");
-        }, done);
-    });
-
     it('should load the widgetized evolution graph correctly', function (done) {
         expect.screenshot('widgetize_evolution_graph').to.be.capture(function (page) {
             page.load("?" + widgetizeParams + "&" + evolutionParams + "&moduleToWidgetize=UserCountry&actionToWidgetize=getCountry"

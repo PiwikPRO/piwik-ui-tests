@@ -27,13 +27,13 @@ describe("ViewDataTableTest", function () { // TODO: should remove Test suffix f
 
     it("should sort a column in descending order when column clicked initially", function (done) {
         expect.screenshot("2_column_sorted_desc").to.be.capture(function (page) {
-            page.click('th#nb_actions');
+            page.click('th#avg_time_on_site');
         }, done);
     });
 
     it("should sort a column in ascending order when column clicked second time", function (done) {
         expect.screenshot("3_column_sorted_asc").to.be.capture(function (page) {
-            page.click('th#nb_actions');
+            page.click('th#avg_time_on_site');
         }, done);
     });
 
