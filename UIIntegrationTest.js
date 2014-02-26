@@ -237,27 +237,6 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
-    it('should load the widgetized ecommerce table view correctly', function (done) {
-        expect.screenshot('widgetize_goals_table_ecommerce').to.be.capture(function (page) {
-            page.load("?" + widgetizeParams + "&" + generalParams + "&moduleToWidgetize=UserCountry&actionToWidgetize=getCountry"
-                    + "&viewDataTable=tableGoals&idGoal=ecommerceOrder");
-        }, done);
-    });
-
-    it('should load the widgetized single goals table view correctly', function (done) {
-        expect.screenshot('widgetize_goals_table_single').to.be.capture(function (page) {
-            page.load("?" + widgetizeParams + "&" + generalParams + "&moduleToWidgetize=UserCountry&actionToWidgetize=getCountry"
-                    + "&viewDataTable=tableGoals&idGoal=1");
-        }, done);
-    });
-
-    it('should load the widgetized full goals table view correctly correctly', function (done) {
-        expect.screenshot('widgetize_goals_table_full').to.be.capture(function (page) {
-            page.load("?" + widgetizeParams + "&" + generalParams + "&moduleToWidgetize=UserCountry&actionToWidgetize=getCountry"
-                    + "&viewDataTable=tableGoals&idGoal=0");
-        }, done);
-    });
-
     it('should load the widgetized evolution graph correctly', function (done) {
         expect.screenshot('widgetize_evolution_graph').to.be.capture(function (page) {
             page.load("?" + widgetizeParams + "&" + evolutionParams + "&moduleToWidgetize=UserCountry&actionToWidgetize=getCountry"
