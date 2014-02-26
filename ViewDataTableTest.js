@@ -10,6 +10,7 @@
 describe("ViewDataTableTest", function () { // TODO: should remove Test suffix from images instead of naming suites ...Test
     this.timeout(0);
 
+    // TODO: rename screenshot files, remove numbers
     var url = "?module=Widgetize&action=iframe&moduleToWidgetize=Referrers&idSite=1&period=year&date=2012-08-09&"
             + "actionToWidgetize=getKeywords&viewDataTable=table&filter_limit=5";
 
@@ -115,6 +116,21 @@ describe("ViewDataTableTest", function () { // TODO: should remove Test suffix f
         expect.screenshot('15_search').to.be.capture(function (page) {
             page.sendKeys('.dataTableSearchPattern>input[type=text]', 'term');
             page.click('.dataTableSearchPattern>input[type=submit]');
+        }, done);
+    });
+
+    it("should display the export options when clicking the export icon", function (done) {
+        expect.screenshot('export_options').to.be.capture(function (page) {
+            page.click('.exportToFormatIcons', 2000);
+        }, done);
+    });
+
+    it("should display a related report when related report link is clicked", function (done) {
+        expect.screenshot('related_report_click').to.be.capture(function (page) {
+            var newReportUrl = url.replace("=Referrers", "=UserSettings").replace("=getKeywords", "=getOS");
+
+            page.load(newReportUrl);
+            page.click('.datatableRelatedReports li>span:visible');
         }, done);
     });
 });
