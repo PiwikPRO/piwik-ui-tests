@@ -305,25 +305,6 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
-    // row evolution
-    it('should load the row evolution popup correctly', function (done) {
-        expect.screenshot('row_evolution_popup').to.be.capture(function (page) {
-            page.load("?" + widgetizeParams + "&moduleToWidgetize=CoreHome&actionToWidgetize=getRowEvolutionPopover"
-                    + "&apiMethod=UserSettings.getBrowser&label=Chrome&disableLink=1&idSite=1&period=day"
-                    + "&date=2012-01-31");
-        }, done);
-    });
-
-    it('should load the multi row evolution popup correctly', function (done) {
-        expect.screenshot('multi_row_evolution_popup').to.be.capture(function (page) {
-            var label = encodeURIComponent("Chrome,Firefox");
-
-            page.load("?" + widgetizeParams + "&moduleToWidgetize=CoreHome&actionToWidgetize=getMultiRowEvolutionPopover"
-                + "&label=" + label + "&apiMethod=UserSettings.getBrowser&idSite=1&period=day"
-                + "&date=2012-01-31&disableLink=1");
-        }, done);
-    });
-
     // transitions popup
     it('should load the transitions popup correctly', function (done) {
         expect.screenshot('transitions_popup').to.be.capture(function (page) {
