@@ -112,6 +112,13 @@ describe("ViewDataTableTest", function () { // TODO: should remove Test suffix f
         }, done);
     });
 
+    it("should load subtables correctly when row clicked", function (done) {
+        expect.screenshot('subtables_loaded').to.be.capture(function (page) {
+            page.click('tr.subDataTable:first');
+            page.click('tr.subDataTable:eq(2)');
+        }, done);
+    });
+
     it("should search the table when a search string is entered and the search button clicked", function (done) {
         expect.screenshot('15_search').to.be.capture(function (page) {
             page.sendKeys('.dataTableSearchPattern>input[type=text]', 'term');
