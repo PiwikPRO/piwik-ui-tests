@@ -76,6 +76,25 @@ var __dirname = phantom.libraryPath,
 // TODO: organize this file more (move more code to support)
 var PIWIK_INCLUDE_PATH = path.join(__dirname, '..', '..', '..');
 
+// parse command line arguments
+var options = require('./support/parse-cli-args').parse();
+
+if (options['help']) {
+    console.log("Usage: phantomjs run-tests.js [options] [test-files]");
+    console.log();
+    console.log("Available options:");
+    console.log("  --help:                 Prints this message.");
+    console.log("  --persist-fixture-data: Persists test data in a database and does not execute tear down.");
+    console.log("                          After the first run, the database setup will not be called, which");
+    console.log("                          Makes running tests faster.");
+    console.log("  --keep-symlinks:        If supplied, the recursive symlinks created in tests/PHPUnit/proxy");
+    console.log("                          aren't deleted after tests are run. Specify this option if you'd like");
+    console.log("                          to view pages phantomjs captures in a browser.");
+    console.log("  --print-logs:           Prints webpage logs even if tests succeed.");
+
+    phantom.exit(0);
+}
+
 // make sure script works wherever it's executed from
 fs.changeWorkingDirectory(__dirname);
 
@@ -101,23 +120,8 @@ var expect = chai.expect; // appears as global in require-d files
 
 require('./support/chai-extras');
 
-// parse command line arguments
-var options = require('./support/parse-cli-args').parse();
-
 var TestingEnvironment = require('./support/test-environment').TestingEnvironment,
     testEnvironment = new TestingEnvironment();
-
-if (options['help']) {
-    console.log("Usage: phantomjs run-tests.js [options] [test-files]");
-    console.log();
-    console.log("Available options:");
-    console.log("  --help:                 Prints this message.");
-    console.log("  --persist-fixture-data: Persists test data in a database and does not execute tear down.");
-    console.log("                          After the first run, the database setup will not be called, which");
-    console.log("                          Makes running tests faster.");
-
-    phantom.exit(0);
-}
 
 // require all test modules
 if (options.tests.length) {
@@ -195,14 +199,16 @@ function runTests() {
     // run tests
     runner = mocha.run(function () {
         // remove symlinks
-        var symlinks = ['libs', 'plugins', 'tests'];
+        if (!options['keep-symlinks']) {
+            var symlinks = ['libs', 'plugins', 'tests'];
 
-        symlinks.forEach(function (item) {
-            var file = path.join('..', 'proxy', item);
-            if (fs.exists(file)) {
-                fs.remove(file);
-            }
-        });
+            symlinks.forEach(function (item) {
+                var file = path.join('..', 'proxy', item);
+                if (fs.exists(file)) {
+                    fs.remove(file);
+                }
+            });
+        }
 
         // build diffviewer
         diffViewerGenerator.checkImageMagickCompare(function () {

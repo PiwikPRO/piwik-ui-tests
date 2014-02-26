@@ -33,8 +33,20 @@ PageRenderer.prototype.getCurrentUrl = function () {
 };
 
 // event queueing functions
-PageRenderer.prototype.click = function (selector, waitTime) {
-    this.queuedEvents.push([this._click, waitTime || 1000, selector]);
+PageRenderer.prototype.click = function () {
+    var selector = arguments[0],
+        waitTime = 1000,
+        modifiers = [];
+
+    for (var i = 1; i != arguments.length; ++i) {
+        if (arguments[i] instanceof Array) {
+            modifiers = arguments[i];
+        } else {
+            waitTime = arguments[i];
+        }
+    }
+
+    this.queuedEvents.push([this._click, waitTime, selector, modifiers]);
 };
 
 PageRenderer.prototype.sendKeys = function (selector, keys, waitTime) {
@@ -60,9 +72,20 @@ PageRenderer.prototype.evaluate = function (impl, waitTime) {
 };
 
 // event impl functions
-PageRenderer.prototype._click = function (selector, callback) {
+PageRenderer.prototype._click = function (selector, modifiers, callback) {
     var position = this._getPosition(selector);
-    this.webpage.sendEvent('click', position.x, position.y);
+
+    if (modifiers.length) {
+        var self = this;
+        modifiers = modifiers.reduce(function (previous, mStr) {
+            return self.webpage.event.modifier[mStr] | previous;
+        }, 0);
+
+        this.webpage.sendEvent('mousedown', position.x, position.y, 'left', modifiers);
+        this.webpage.sendEvent('mouseup', position.x, position.y, 'left', modifiers);
+    } else {
+        this.webpage.sendEvent('click', position.x, position.y);
+    }
 
     callback();
 };

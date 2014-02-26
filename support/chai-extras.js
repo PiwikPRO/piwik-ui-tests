@@ -20,6 +20,18 @@ chai.expect.screenshot = function (file, prefix) {
     return chai.expect(prefix + '_' + file);
 };
 
+function getPageLogsString(pageLogs, indent) {
+    var result = "";
+    if (pageLogs.length) {
+        result = "\n\n" + indent + "Rendering logs:\n";
+        pageLogs.forEach(function (message) {
+            result += indent + "  " + message.replace(/\n/g, "\n" + indent + "  ") + "\n";
+        });
+        result = result.substring(0, result.length - 1);
+    }
+    return result;
+}
+
 // add capture assertion
 var pageRenderer = new PageRenderer(path.join(config.piwikUrl, "tests", "PHPUnit", "proxy"));
 chai.Assertion.addChainableMethod('capture', function () {
@@ -79,13 +91,7 @@ chai.Assertion.addChainableMethod('capture', function () {
                 failureInfo += indent + "Expected screenshot: " + testInfo.expected + "\n";
                 failureInfo += indent + "Screenshot diff: " + diffViewerGenerator.getDiffPath(testInfo);
 
-                if (pageRenderer.pageLogs.length) {
-                    failureInfo += "\n\n" + indent + "Rendering logs:\n";
-                    pageRenderer.pageLogs.forEach(function (message) {
-                        failureInfo += indent + "  " + message.replace(/\n/g, "\n" + indent + "  ") + "\n";
-                    });
-                    failureInfo = failureInfo.substring(0, failureInfo.length - 1);
-                }
+                failureInfo += getPageLogsString(pageRenderer.pageLogs, indent);
 
                 error = new AssertionError(message);
 
@@ -111,6 +117,10 @@ chai.Assertion.addChainableMethod('capture', function () {
             if (expected != processed) {
                 fail("Processed screenshot does not match expected for " + screenshotFileName + ".");
                 return;
+            }
+
+            if (options['print-logs']) {
+                console.log(getPageLogsString(pageRenderer.pageLogs, "     "));
             }
 
             done();
