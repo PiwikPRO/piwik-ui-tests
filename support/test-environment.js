@@ -23,4 +23,28 @@ TestingEnvironment.prototype.save = function () {
     fs.write(testingEnvironmentOverridePath, JSON.stringify(this));
 };
 
+TestingEnvironment.prototype.callApi = function (method, params, done) {
+    params.module = "API";
+    params.method = method;
+    params.format = 'json';
+
+    var url = path.join(config.piwikUrl, "tests/PHPUnit/proxy/index.php?");
+    for (var key in params) {
+        url += key + "=" + encodeURIComponent(params[key]) + "&";
+    }
+    url = url.substring(0, url.length - 1);
+
+    var page = require('webpage').create();
+    page.open(url, function () {
+        var response = page.plainText;
+        if (response.replace(/\s*/g, "")) {
+            JSON.parse(response);
+        }
+
+        page.close();
+
+        done(null, response);
+    });
+};
+
 exports.TestingEnvironment = TestingEnvironment;

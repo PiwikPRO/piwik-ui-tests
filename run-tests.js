@@ -10,7 +10,7 @@
 // no path module in phantomjs
 var path = {
     join: function () {
-        return Array.prototype.join.call(arguments, "/").replace(/[\\\/]{2,}/, "/");
+        return Array.prototype.join.call(arguments, "/").replace(/[\\\/]{2,}/g, "/");
     }
 };
 

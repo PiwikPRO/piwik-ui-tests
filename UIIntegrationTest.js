@@ -237,13 +237,6 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
-    it('should load the widgetized evolution graph correctly', function (done) {
-        expect.screenshot('widgetize_evolution_graph').to.be.capture(function (page) {
-            page.load("?" + widgetizeParams + "&" + evolutionParams + "&moduleToWidgetize=UserCountry&actionToWidgetize=getCountry"
-                    + "&viewDataTable=graphEvolution");
-        }, done);
-    });
-
     it('should load the widgetized dashboard correctly', function (done) {
         expect.screenshot('widgetize_dashboard').to.be.capture(function (page) {
             page.load("?" + widgetizeParams + "&" + generalParams + "&moduleToWidgetize=Dashboard&actionToWidgetize=index");

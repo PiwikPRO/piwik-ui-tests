@@ -50,7 +50,7 @@ PageRenderer.prototype.click = function () {
 };
 
 PageRenderer.prototype.sendKeys = function (selector, keys, waitTime) {
-    this.queuedEvents.push([this._click, 100, selector]);
+    this.click(selector, 100);
     this.queuedEvents.push([this._keypress, waitTime || 1000, keys]);
 };
 
@@ -65,7 +65,6 @@ PageRenderer.prototype.reload = function (waitTime) {
 PageRenderer.prototype.load = function (url, waitTime) {
     this.queuedEvents.push([this._load, waitTime || 1000, url]);
 };
-
 
 PageRenderer.prototype.evaluate = function (impl, waitTime) {
     this.queuedEvents.push([this._evaluate, waitTime || 1000, impl]);
@@ -202,7 +201,7 @@ PageRenderer.prototype._executeEvents = function (events, callback, i) {
     try {
         impl.apply(this, evt);
     } catch (err) {
-        self.pageLogs.push("Error: " + err.message);
+        self.pageLogs.push("Error: " + err.stack);
         waitForNextEvent();
     }
 };
