@@ -265,27 +265,6 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
-    it('should load the widgetized actions correctly when search params are used', function (done) {
-        expect.screenshot('widgetize_actions_search').to.be.capture(function (page) {
-            page.load("?" + widgetizeParams + "&" + generalParams + "&moduleToWidgetize=Actions&actionToWidgetize=getPageUrls"
-                    + "&filter_column_recursive=label&filter_pattern_recursive=i");
-        }, done);
-    });
-
-    it('should load the widgetized flattened actions table correctly', function (done) {
-        expect.screenshot('widgetize_actions_flat').to.be.capture(function (page) {
-            page.load("?" + widgetizeParams + "&" + generalParams + "&moduleToWidgetize=Actions&actionToWidgetize=getPageUrls"
-                    + "&flat=1");
-        }, done);
-    });
-
-    it('should load the widgetized actions table correctly when low population is excluded', function (done) {
-        expect.screenshot('widgetize_actions_excludelowpop').to.be.capture(function (page) {
-            page.load("?" + widgetizeParams + "&" + generalParams + "&moduleToWidgetize=Actions&actionToWidgetize=getPageUrls"
-                    + "&enable_filter_excludelowpop=1");
-        }, done);
-    });
-
     it('should load the widgetized dashboard correctly', function (done) {
         expect.screenshot('widgetize_dashboard').to.be.capture(function (page) {
             page.load("?" + widgetizeParams + "&" + generalParams + "&moduleToWidgetize=Dashboard&actionToWidgetize=index");
