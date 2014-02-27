@@ -60,7 +60,7 @@ Application.prototype.loadTestModules = function () {
     var plugins = fs.list(pluginDir).map(function (item) {
         return path.join(pluginDir, item);
     }).filter(function (path) {
-        return fs.isDirectory(path);
+        return fs.isDirectory(path) && !path.match(/\/\.*$/);
     });
 
     // load all UI tests we can find
