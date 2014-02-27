@@ -11,6 +11,28 @@ var fs = require('fs'),
     path = require('./path'),
     DiffViewerGenerator = require('./diff-viewer').DiffViewerGenerator
 
+var walk = function (dir, pattern, result) {
+    result = result || [];
+
+    fs.list(dir).forEach(function (item) {
+        if (item == '.'
+            || item == '..'
+        ) {
+            return;
+        }
+
+        var wholePath = path.join(dir, item);
+
+        if (fs.isDirectory(wholePath)) {
+            walk(wholePath, pattern, result);
+        } else if (wholePath.match(pattern)) {
+            result.push(wholePath);
+        }
+    });
+
+    return result;
+};
+
 var Application = function () {
     this.runner = null;
 };
@@ -32,12 +54,24 @@ Application.prototype.printHelpAndExit = function () {
 };
 
 Application.prototype.loadTestModules = function () {
+    var pluginDir = path.join(PIWIK_INCLUDE_PATH, 'plugins');
+
+    // find all installed plugins
+    var plugins = fs.list(pluginDir).map(function (item) {
+        return path.join(pluginDir, item);
+    }).filter(function (path) {
+        return fs.isDirectory(path);
+    });
+
     // load all UI tests we can find
-    fs.list(__dirname).filter(function (item) {
-        var file = path.join(__dirname, item);
-        return item != "config.js" && item != "run-tests.js" && fs.isFile(file) && file.slice(-3) == '.js';
-    }).forEach(function (path) {
-        require('./../' + path);
+    var modulePaths = walk(__dirname, /_spec\.js$/);
+
+    plugins.forEach(function (pluginPath) {
+        walk(path.join(pluginPath, 'tests'), /_spec\.js$/, modulePaths);
+    });
+
+    modulePaths.forEach(function (path) {
+        require(path);
     });
 
     // filter suites to run
