@@ -32,18 +32,20 @@ Application.prototype.printHelpAndExit = function () {
 };
 
 Application.prototype.loadTestModules = function () {
-    if (options.tests.length) {
-        var testFiles = options.tests;
-    } else {
-        var testFiles = fs.list(__dirname).filter(function (item) {
-            var file = path.join(__dirname, item);
-            return item != "config.js" && item != "run-tests.js" && fs.isFile(file) && file.slice(-3) == '.js';
-        });
-    }
-
-    testFiles.forEach(function (path) {
+    // load all UI tests we can find
+    fs.list(__dirname).filter(function (item) {
+        var file = path.join(__dirname, item);
+        return item != "config.js" && item != "run-tests.js" && fs.isFile(file) && file.slice(-3) == '.js';
+    }).forEach(function (path) {
         require('./../' + path);
     });
+
+    // filter suites to run
+    if (options.tests.length) {
+        mocha.suite.suites = mocha.suite.suites.filter(function (suite) {
+            return options.tests.indexOf(suite.title) != -1;
+        });
+    }
 };
 
 Application.prototype.runTests = function () {
@@ -73,10 +75,6 @@ Application.prototype.runTests = function () {
         }
     });
 
-    this.setupDatabase();
-};
-
-Application.prototype.runTests = function () {
     this.setupDatabase();
 };
 
