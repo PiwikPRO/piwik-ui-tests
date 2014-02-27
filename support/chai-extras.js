@@ -12,9 +12,9 @@ var fs = require('fs'),
     AssertionError = chai.AssertionError;
 
 // add screenshot keyword to `expect`
-chai.expect.screenshot = function (file, prefix) {
+expect.screenshot = function (file, prefix) {
     if (!prefix) {
-        prefix = runner.suite.title; // note: runner is made global by run-tests.js
+        prefix = app.runner.suite.title; // note: runner is made global by run-tests.js
     }
 
     return chai.expect(prefix + '_' + file);
@@ -41,7 +41,7 @@ chai.Assertion.addChainableMethod('capture', function () {
             pageSetupFn = arguments[0],
             done = arguments[1];
     } else {
-        var screenName = runner.suite.title + "_" + arguments[0],
+        var screenName = app.runner.suite.title + "_" + arguments[0],
             pageSetupFn = arguments[1],
             done = arguments[2];
     }
@@ -82,14 +82,14 @@ chai.Assertion.addChainableMethod('capture', function () {
             };
 
             var fail = function (message) {
-                diffViewerGenerator.failures.push(testInfo);
+                app.diffViewerGenerator.failures.push(testInfo);
 
                 var indent = "     ";
                 var failureInfo = message + "\n";
                 failureInfo += indent + "Url to reproduce: " + pageRenderer.getCurrentUrl() + "\n";
                 failureInfo += indent + "Generated screenshot: " + testInfo.processed + "\n";
                 failureInfo += indent + "Expected screenshot: " + testInfo.expected + "\n";
-                failureInfo += indent + "Screenshot diff: " + diffViewerGenerator.getDiffPath(testInfo);
+                failureInfo += indent + "Screenshot diff: " + app.diffViewerGenerator.getDiffPath(testInfo);
 
                 failureInfo += getPageLogsString(pageRenderer.pageLogs, indent);
 

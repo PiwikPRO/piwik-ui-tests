@@ -16,6 +16,9 @@ var PageRenderer = function (baseUrl) {
     this.pageLogs = [];
     this.aborted = false;
     this.baseUrl = baseUrl;
+
+    this.defaultWaitTime = 1000;
+    this._isLoading = false;
 };
 
 PageRenderer.prototype._recreateWebPage = function () {
@@ -35,7 +38,7 @@ PageRenderer.prototype.getCurrentUrl = function () {
 // event queueing functions
 PageRenderer.prototype.click = function () {
     var selector = arguments[0],
-        waitTime = 1000,
+        waitTime = null,
         modifiers = [];
 
     for (var i = 1; i != arguments.length; ++i) {
@@ -51,11 +54,11 @@ PageRenderer.prototype.click = function () {
 
 PageRenderer.prototype.sendKeys = function (selector, keys, waitTime) {
     this.click(selector, 100);
-    this.queuedEvents.push([this._keypress, waitTime || 1000, keys]);
+    this.queuedEvents.push([this._keypress, waitTime, keys]);
 };
 
 PageRenderer.prototype.mouseMove = function (selector, waitTime) {
-    this.queuedEvents.push([this._mousemove, waitTime || 1000, selector]);
+    this.queuedEvents.push([this._mousemove, waitTime, selector]);
 };
 
 PageRenderer.prototype.reload = function (waitTime) {
@@ -63,11 +66,11 @@ PageRenderer.prototype.reload = function (waitTime) {
 };
 
 PageRenderer.prototype.load = function (url, waitTime) {
-    this.queuedEvents.push([this._load, waitTime || 1000, url]);
+    this.queuedEvents.push([this._load, waitTime, url]);
 };
 
 PageRenderer.prototype.evaluate = function (impl, waitTime) {
-    this.queuedEvents.push([this._evaluate, waitTime || 1000, impl]);
+    this.queuedEvents.push([this._evaluate, waitTime, impl]);
 };
 
 // event impl functions
@@ -189,7 +192,7 @@ PageRenderer.prototype._executeEvents = function (events, callback, i) {
     }
 
     var impl = evt.shift(),
-        waitTime = evt.shift();
+        waitTime = evt.shift() || this.defaultWaitTime;
 
     var self = this,
         waitForNextEvent = function () {
@@ -234,6 +237,7 @@ PageRenderer.prototype._waitForNextEvent = function (events, callback, i, waitTi
     setTimeout(function () {
         if (self._getAjaxRequestCount() == 0
             && self._getImageLoadingCount() == 0
+            && !self._isLoading
         ) {
             self._executeEvents(events, callback, i + 1);
         } else {
@@ -280,6 +284,14 @@ PageRenderer.prototype._setupWebpageEvents = function () {
 
     this.webpage.onConsoleMessage = function (message) {
         self.pageLogs.push('Log: ' + message);
+    };
+
+    this.webpage.onLoadStarted = function () {
+        self._isLoading = true;
+    };
+
+    this.webpage.onLoadFinished = function () {
+        self._isLoading = false;
     };
 };
 

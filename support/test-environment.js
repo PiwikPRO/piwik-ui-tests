@@ -47,4 +47,4 @@ TestingEnvironment.prototype.callApi = function (method, params, done) {
     });
 };
 
-exports.TestingEnvironment = TestingEnvironment;
+exports.TestingEnvironment = new TestingEnvironment();

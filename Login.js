@@ -38,7 +38,7 @@ describe("Login", function () {
         expect.screenshot("login_success").to.be.capture(function (page) {
             page.sendKeys("#login_form_login", "superUserLogin");
             page.sendKeys("#login_form_password", "superUserPass");
-            page.click("#login_form_submit", 10000);
+            page.click("#login_form_submit");
         }, done);
     });
 
@@ -50,7 +50,7 @@ describe("Login", function () {
 
     it("should display password reset form when forgot password link clicked", function (done) {
         expect.screenshot("forgot_password").to.be.capture(function (page) {
-            page.reload(10000);
+            page.reload();
             page.click("a#login_form_nav");
         }, done);
     });
@@ -79,7 +79,7 @@ describe("Login", function () {
             page.load("");
             page.sendKeys("#login_form_login", "superUserLogin");
             page.sendKeys("#login_form_password", "superUserPass2");
-            page.click("#login_form_submit", 10000);
+            page.click("#login_form_submit");
         }, done);
     });
 });
