@@ -43,6 +43,13 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
+    it("should display dashboard correctly on a mobile phone", function (done) {
+        expect.screenshot("dashboard1_mobile").to.be.capture(function (page) {
+            page.setViewportSize(480, 320);
+            page.load("?" + urlBase + "#" + generalParams + "&module=Dashboard&action=embeddedIndex&idDashboard=1");
+        }, done);
+    });
+
     // visitors pages
     it('should load visitors > overview page correctly', function (done) {
         expect.screenshot("visitors_overview").to.be.capture(function (page) {

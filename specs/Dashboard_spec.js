@@ -35,7 +35,7 @@ describe("Dashboard", function () {
         });
     };
 
-    before(function (done) {
+    var setup = function (done) {
         // save empty layout for dashboard ID = 5
         var layout = [
             [
@@ -55,14 +55,10 @@ describe("Dashboard", function () {
                 removeAllExtraDashboards(done);
             });
         });
-    });
+    };
 
-    after(function (done) {
-        // reset default widget selection
-        testEnvironment.callController("Dashboard.saveLayoutAsDefault", {layout: 0}, function () {
-            removeAllExtraDashboards(done);
-        });
-    });
+    before(setup);
+    after(setup);
 
     it("should load correctly", function (done) {
         expect.screenshot("loaded").to.be.capture(function (page) {
