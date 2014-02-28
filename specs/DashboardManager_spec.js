@@ -1,7 +1,7 @@
 /*!
  * Piwik - Web Analytics
  *
- * Period selector screenshot tests.
+ * Dashboard manager screenshot tests.
  *
  * @link http://piwik.org
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later

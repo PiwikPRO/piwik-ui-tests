@@ -237,12 +237,6 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
-    it('should load the widgetized dashboard correctly', function (done) {
-        expect.screenshot('widgetize_dashboard').to.be.capture(function (page) {
-            page.load("?" + widgetizeParams + "&" + generalParams + "&moduleToWidgetize=Dashboard&actionToWidgetize=index");
-        }, done);
-    });
-
     it('should load the widgetized all websites dashboard correctly', function (done) {
         expect.screenshot('widgetize_allwebsites').to.be.capture(function (page) {
             page.load("?" + widgetizeParams + "&" + generalParams + "&moduleToWidgetize=MultiSites&actionToWidgetize=standalone");
