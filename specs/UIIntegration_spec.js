@@ -44,9 +44,9 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     });
 
     it("should display dashboard correctly on a mobile phone", function (done) {
-        expect.screenshot("dashboard1_mobile").to.be.capture(function (page) {
+        expect.screenshot("dashboard5_mobile").to.be.capture(function (page) {
             page.setViewportSize(480, 320);
-            page.load("?" + urlBase + "#" + generalParams + "&module=Dashboard&action=embeddedIndex&idDashboard=1");
+            page.load("?" + urlBase + "#" + generalParams + "&module=Dashboard&action=embeddedIndex&idDashboard=5");
         }, done);
     });
 
@@ -102,7 +102,8 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     it('should load the visitors > real-time map page correctly', function (done) {
         expect.screenshot('visitors_realtime_map').to.be.capture(function (page) {
             page.load("?" + urlBase + "#" + idSite2Params + "&module=UserCountryMap&action=realtimeWorldMap"
-                    + "&showDateTime=0&realtimeWindow=last2&changeVisitAlpha=0&enableAnimation=0");
+                    + "&showDateTime=0&realtimeWindow=last2&changeVisitAlpha=0&enableAnimation=0&doNotRefreshVisits=1"
+                    + "&removeOldVisits=0");
         }, done);
     });
 
@@ -231,9 +232,16 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
-    it('should load the example ui > page correctly', function (done) {
+    it('should load the example ui > evolution graph page correctly', function (done) {
         expect.screenshot('exampleui_evolutionGraph').to.be.capture(function (page) {
             page.load("?" + urlBase + "#" + generalParams + "&module=ExampleUI&action=evolutionGraph");
+        }, done);
+    });
+
+    it('should load the example ui > treemap page correctly', function (done) {
+        expect.screenshot('exampleui_treemap').to.be.capture(function (page) {
+            page.load("?" + urlBase + "#" + generalParams + "&module=ExampleUI&action=treemap");
+            page.wait(2000);
         }, done);
     });
 
@@ -258,7 +266,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
-    // Admin user settings
+    // Admin user settings (plugins not displayed)
     it('should load the themes admin page correctly', function (done) {
         expect.screenshot('admin_themes').to.be.capture(function (page) {
             page.load("?" + generalParams + "&module=CorePluginsAdmin&action=themes");
@@ -280,6 +288,48 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     it('should load the plugin settings admin page correctly', function (done) {
         expect.screenshot('admin_plugin_settings').to.be.capture(function (page) {
             page.load("?" + generalParams + "&module=CoreAdminHome&action=pluginSettings");
+        }, done);
+    });
+
+    it('should load the Manage > Websites admin page correctly', function (done) {
+        expect.screenshot('admin_manage_websites').to.be.capture(function (page) {
+            page.load("?" + generalParams + "&module=SitesManager&action=index");
+        }, done);
+    });
+
+    it('should load the Manage > Users admin page correctly', function (done) {
+        expect.screenshot('admin_manage_users').to.be.capture(function (page) {
+            page.load("?" + generalParams + "&module=UsersManager&action=index");
+        }, done);
+    });
+
+    it('should load the Manage > Tracking Code admin page correctly', function (done) {
+        expect.screenshot('admin_manage_tracking_code').to.be.capture(function (page) {
+            page.load("?" + generalParams + "&module=CoreAdminHome&action=trackingCodeGenerator");
+        }, done);
+    });
+
+    it('should load the Settings > General Settings admin page correctly', function (done) {
+        expect.screenshot('admin_settings_general').to.be.capture(function (page) {
+            page.load("?" + generalParams + "&module=CoreAdminHome&action=generalSettings");
+        }, done);
+    });
+
+    it('should load the Settings > Privacy admin page correctly', function (done) {
+        expect.screenshot('admin_privacy_settings').to.be.capture(function (page) {
+            page.load("?" + generalParams + "&module=PrivacyManager&action=privacySettings");
+        }, done);
+    });
+
+    it('should load the Settings > Mobile Messaging admin page correctly', function (done) {
+        expect.screenshot('admin_settings_mobilemessaging').to.be.capture(function (page) {
+            page.load("?" + generalParams + "&module=MobileMessaging&action=index");
+        }, done);
+    });
+
+    it('should load the Settings > Visitor Generator admin page correctly', function (done) {
+        expect.screenshot('admin_visitor_generator').to.be.capture(function (page) {
+            page.load("?" + generalParams + "&module=VisitorGenerator&action=index");
         }, done);
     });
 
@@ -338,30 +388,19 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
-    // adding new widget
-    it('should add a new widget to the dashboard when a widget is selected in the dashboard manager', function (done) {
-        expect.screenshot('dashboard_add_widget').to.be.capture(function (page) {
-            page.load("?" + urlBase + "#" + generalParams + "&module=Dashboard&action=embeddedIndex&idDashboard=5");
-            page.evaluate(function () {
-                $(document).ready(function () {
-                    $('#dashboardSettings').click();
-                    $('.widgetpreview-categorylist>li:first-child').triggerHandler('mouseover');
-                    $('.widgetpreview-widgetlist>li:first-child').click();
-                });
-            });
-        }, done);
-    });
-
     // visitor profile popup
-    it('should load the visitor profile popup correctly', function (done) {
+    it.only('should load the visitor profile popup correctly', function (done) {
         expect.screenshot('visitor_profile_popup').to.be.capture(function (page) {
-            page.load("?" + widgetizeParams + "&" + idSite2Params + "&moduleToWidgetize=Live&actionToWidgetize=getVisitorProfilePopup");
+            page.load("?" + widgetizeParams + "&" + idSite2Params + "&moduleToWidgetize=Live&actionToWidgetize=getVisitorProfilePopup"
+                    + "&enableAnimation=0");
 
             page.evaluate(function () {
                 $(document).ready(function () {
                     $('.visitor-profile-show-map').click();
                 });
             });
+
+            page.wait(1000);
         }, done);
     });
 });
