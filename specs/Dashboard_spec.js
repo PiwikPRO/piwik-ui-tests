@@ -187,6 +187,9 @@ describe("Dashboard", function () {
             page.click('.dashboard-manager');
             page.click('li[data-action=removeDashboard]');
             page.click('.ui-dialog[aria-describedby=removeDashboardConfirm] button>span:contains(Yes)');
+            page.evaluate(function () {
+                $('.widgetTop').removeClass('widgetTopHover');
+            });
         }, done);
     });
 
