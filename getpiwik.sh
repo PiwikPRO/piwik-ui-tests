@@ -27,9 +27,7 @@ echo "Updating submodules..."
 cd piwik
 git submodule update --init --recursive
 
-ls tests/PHPUnit/UI
-
-if [ ! -f tests/PHPUnit/UI/run-tests.js ]; then
+if [ ! -d tests/PHPUnit/UI/specs ]; then
     echo "Getting latest UI test submodule..."
     cd tests/PHPUnit/UI
     git pull --rebase origin master
