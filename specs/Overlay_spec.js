@@ -11,7 +11,16 @@
 describe("Overlay", function () {
     this.timeout(0);
 
-    var url = "?module=Overlay&period=year&date=today&idSite=3#l=" + encodeURIComponent(testEnvironment.overlayUrl).replace(/[%]/g, "$");
+    var url = "?module=Overlay&period=year&date=today&idSite=3#l=" + encodeURIComponent(testEnvironment.overlayUrl).replace(/[%]/g, "$"),
+        overlayAliasUrl = config.piwikUrl;
+
+    before(function (done) {
+        testEnvironment.callApi("SitesManager.addSiteAliasUrls", {idSite: 3, urls: [overlayAliasUrl]}, done);
+    });
+
+    after(function (done) {
+        testEnvironment.callApi("SitesManager.setSiteAliasUrls", {idSite: 3, urls: []}, done);
+    });
 
     it("should load correctly", function (done) {
         expect.screenshot("loaded").to.be.capture(function (page) {

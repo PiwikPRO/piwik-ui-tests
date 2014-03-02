@@ -18,6 +18,10 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         segment = encodeURIComponent("browserCode==FF") // from OmniFixture
         ;
 
+    before(function (done) {
+        testEnvironment.callApi("SitesManager.setSiteAliasUrls", {idSite: 3, urls: []}, done);
+    });
+
     // dashboard tests
     it("should load dashboard1 correctly", function (done) {
         expect.screenshot("dashboard1").to.be.capture(function (page) {
@@ -291,7 +295,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
-    it('should load the Manage > Websites admin page correctly', function (done) {
+    it.only('should load the Manage > Websites admin page correctly', function (done) {
         expect.screenshot('admin_manage_websites').to.be.capture(function (page) {
             page.load("?" + generalParams + "&module=SitesManager&action=index");
         }, done);

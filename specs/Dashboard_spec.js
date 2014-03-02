@@ -178,7 +178,7 @@ describe("Dashboard", function () {
         expect.screenshot("reset").to.be.capture(function (page) {
             page.click('.dashboard-manager');
             page.click('li[data-action=resetDashboard]');
-            page.click('.ui-dialog button>span:contains(Yes)', 5000);
+            page.click('.ui-dialog button>span:contains(Yes)', 10000);
         }, done);
     });
 

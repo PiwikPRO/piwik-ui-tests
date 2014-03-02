@@ -12,11 +12,13 @@ describe("Login", function () {
 
     before(function () {
         testEnvironment.testUseRegularAuth = 1;
+        testEnvironment.queryParamOverride = {date: "2012-01-01", period: "year"};
         testEnvironment.save();
     });
 
     after(function () {
         testEnvironment.testUseRegularAuth = 0;
+        delete testEnvironment.queryParamOverride;
         testEnvironment.save();
     });
 
