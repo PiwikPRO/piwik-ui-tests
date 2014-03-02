@@ -295,7 +295,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
-    it.only('should load the Manage > Websites admin page correctly', function (done) {
+    it('should load the Manage > Websites admin page correctly', function (done) {
         expect.screenshot('admin_manage_websites').to.be.capture(function (page) {
             page.load("?" + generalParams + "&module=SitesManager&action=index");
         }, done);
