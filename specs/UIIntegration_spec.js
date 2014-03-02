@@ -389,7 +389,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     });
 
     // visitor profile popup
-    it.only('should load the visitor profile popup correctly', function (done) {
+    it('should load the visitor profile popup correctly', function (done) {
         expect.screenshot('visitor_profile_popup').to.be.capture(function (page) {
             page.load("?" + widgetizeParams + "&" + idSite2Params + "&moduleToWidgetize=Live&actionToWidgetize=getVisitorProfilePopup"
                     + "&enableAnimation=0");
