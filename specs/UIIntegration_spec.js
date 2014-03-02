@@ -345,7 +345,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     });
 
     // Fatal error safemode
-    it('should load the safemode fatal error page correctly', function (done) {
+    it.only('should load the safemode fatal error page correctly', function (done) {
         var message = "Call%20to%20undefined%20function%20Piwik%5CPlugins%5CFoobar%5CPiwik_Translate()",
             file = "%2Fhome%2Fvagrant%2Fwww%2Fpiwik%2Fplugins%2FFoobar%2FFoobar.php%20line%205",
             line = 58;
