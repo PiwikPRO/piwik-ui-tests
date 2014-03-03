@@ -40,6 +40,11 @@ describe("DashboardManager", function () {
 
     it("should close the manager when a widget is selected", function (done) {
         expect.screenshot("loaded").to.be.capture("widget_selected", function (page) {
+            // make sure selecting a widget does nothing
+            page.evaluate(function () {
+                $('.dashboard-manager').data('uiControlObject').widgetSelected = function () {};
+            });
+
             page.click('.widgetpreview-widgetlist>li:contains(Visits Over Time)');
         }, done);
     });
