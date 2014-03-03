@@ -331,9 +331,14 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
-    it('should load the Settings > Visitor Generator admin page correctly', function (done) {
+    it.only('should load the Settings > Visitor Generator admin page correctly', function (done) {
         expect.screenshot('admin_visitor_generator').to.be.capture(function (page) {
             page.load("?" + generalParams + "&module=VisitorGenerator&action=index");
+
+            page.evaluate(function () {
+                var $p = $('#content p:eq(1)');
+                $p.text($p.text().replace(/\(change .*\)/g, ''));
+            });
         }, done);
     });
 

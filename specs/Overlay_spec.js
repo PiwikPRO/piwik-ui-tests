@@ -10,6 +10,7 @@
 // TODO: should be stored in Overlay plugin
 describe("Overlay", function () {
     this.timeout(0);
+    console.log("OVERLAY URL: " + testEnvironment.overlayUrl);
 
     var url = "?module=Overlay&period=year&date=today&idSite=3#l=" + encodeURIComponent(testEnvironment.overlayUrl).replace(/[%]/g, "$"),
         overlayAliasUrl = config.piwikUrl;
