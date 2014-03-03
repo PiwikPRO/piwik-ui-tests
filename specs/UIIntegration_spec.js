@@ -304,6 +304,13 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     it('should load the Manage > Users admin page correctly', function (done) {
         expect.screenshot('admin_manage_users').to.be.capture(function (page) {
             page.load("?" + generalParams + "&module=UsersManager&action=index");
+
+            // remove token auth which can be random
+            page.evaluate(function () {
+                $('td#token_auth').each(function () {
+                    $(this).text('');
+                });
+            });
         }, done);
     });
 
