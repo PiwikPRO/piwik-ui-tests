@@ -331,7 +331,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
-    it.only('should load the Settings > Visitor Generator admin page correctly', function (done) {
+    it('should load the Settings > Visitor Generator admin page correctly', function (done) {
         expect.screenshot('admin_visitor_generator').to.be.capture(function (page) {
             page.load("?" + generalParams + "&module=VisitorGenerator&action=index");
 
