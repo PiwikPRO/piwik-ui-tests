@@ -10,13 +10,13 @@
 // TODO: should be stored in Overlay plugin
 describe("Overlay", function () {
     this.timeout(0);
-    console.log("OVERLAY URL: " + testEnvironment.overlayUrl);
 
-    var url = "?module=Overlay&period=year&date=today&idSite=3#l=" + encodeURIComponent(testEnvironment.overlayUrl).replace(/[%]/g, "$"),
-        overlayAliasUrl = config.piwikUrl;
+    var url = null;
 
     before(function (done) {
-        testEnvironment.callApi("SitesManager.addSiteAliasUrls", {idSite: 3, urls: [overlayAliasUrl]}, done);
+        url = "?module=Overlay&period=year&date=today&idSite=3#l=" + encodeURIComponent(testEnvironment.overlayUrl).replace(/[%]/g, "$");
+        
+        testEnvironment.callApi("SitesManager.addSiteAliasUrls", {idSite: 3, urls: [config.piwikUrl]}, done);
     });
 
     after(function (done) {
