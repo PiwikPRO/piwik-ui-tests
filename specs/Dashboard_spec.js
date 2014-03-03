@@ -131,6 +131,7 @@ describe("Dashboard", function () {
             page.mouseMove('#widgetVisitTimegetVisitInformationPerLocalTime .widgetTop');
             page.click('#widgetVisitTimegetVisitInformationPerLocalTime .button#close');
             page.click('.ui-dialog button>span:contains(Yes)');
+            page.mouseMove('.dashboard-manager');
         }, done);
     });
 
