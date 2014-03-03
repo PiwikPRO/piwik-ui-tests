@@ -11,7 +11,7 @@ describe("Installation", function () {
     this.timeout(0);
 
     afterEach(function () {
-        testEnvironment.configFileLocal = null;
+        delete testEnvironment.configFileLocal;
         testEnvironment.save();
     });
 
