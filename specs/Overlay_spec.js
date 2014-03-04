@@ -82,6 +82,9 @@ describe("Overlay", function () {
     it("should open row evolution popup when row evolution link clicked", function (done) {
         expect.screenshot("row_evolution").to.be.capture(function (page) {
             page.click('#Overlay_RowEvolution');
+            page.evaluate(function () {
+                $('.jqplot-xaxis').hide(); // xaxis will change every day so hide it
+            });
         }, done);
     });
 
