@@ -19,7 +19,18 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         ;
 
     before(function (done) {
+        testEnvironment.queryParamOverride = {
+            forceNowValue: testEnvironment.forcedNowTimestamp,
+            visitorId: testEnvironment.forcedIdVisitor
+        };
+        testEnvironment.save();
+
         testEnvironment.callApi("SitesManager.setSiteAliasUrls", {idSite: 3, urls: []}, done);
+    });
+
+    after(function (done) {
+        delete testEnvironment.queryParamOverride;
+        testEnvironment.save();
     });
 
     // dashboard tests
