@@ -180,6 +180,7 @@ describe("Dashboard", function () {
             page.click('.dashboard-manager');
             page.click('li[data-action=resetDashboard]');
             page.click('.ui-dialog button>span:contains(Yes)', 10000);
+            page.mouseMove('.dashboard-manager');
         }, done);
     });
 
