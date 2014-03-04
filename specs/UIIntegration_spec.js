@@ -28,7 +28,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         testEnvironment.callApi("SitesManager.setSiteAliasUrls", {idSite: 3, urls: []}, done);
     });
 
-    after(function (done) {
+    after(function () {
         delete testEnvironment.queryParamOverride;
         testEnvironment.save();
     });

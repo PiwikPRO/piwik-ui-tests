@@ -1,10 +1,10 @@
 ## Piwik User Interface Tests
 
-This repository contains user interface tests for Piwik, taking automated screenshots of particular Piwik pages and reports.
+This repository contains user interface tests for Piwik which take screenshots of Piwik pages and controls.
 
-To learn more, read [this](https://github.com/piwik/piwik/blob/master/tests/README.md).
+To learn more, read [this](https://github.com/piwik/piwik/blob/master/tests/README.screenshots.md).
  
-Screenshot tests Build  [![Build Status](https://travis-ci.org/piwik/piwik-ui-tests.png?branch=master)](https://travis-ci.org/piwik/piwik-ui-tests)
+Travis CI build:  [![Build Status](https://travis-ci.org/piwik/piwik-ui-tests.png?branch=master)](https://travis-ci.org/piwik/piwik-ui-tests)
 
 #### Deleting git history
 

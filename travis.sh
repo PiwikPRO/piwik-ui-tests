@@ -4,7 +4,7 @@ echo "If the new screenshots are valid, then you can copy them over to tests/PHP
 echo ""
 
 if [ -d ./UI/specs ]; then
-    phantomjs ../lib/screenshot-testing/run-tests.js
+    phantomjs ../lib/screenshot-testing/run-tests.js --store-in-ui-tests-repo --use-github-expected
 else
     phpunit UI
 fi
