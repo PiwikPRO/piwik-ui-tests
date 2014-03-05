@@ -282,30 +282,6 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     });
 
     // Admin user settings (plugins not displayed)
-    it('should load the themes admin page correctly', function (done) {
-        expect.screenshot('admin_themes').to.be.capture(function (page) {
-            page.load("?" + generalParams + "&module=CorePluginsAdmin&action=themes");
-        }, done);
-    });
-
-    it('should load the security info admin page correctly', function (done) {
-        expect.screenshot('admin_security_info').to.be.capture(function (page) {
-            page.load("?" + generalParams + "&module=SecurityInfo&tests_hide_piwik_version=1");
-        }, done);
-    });
-
-    it('should load the user settings admin page correctly', function (done) {
-        expect.screenshot('admin_user_settings').to.be.capture(function (page) {
-            page.load("?" + generalParams + "&module=UsersManager&action=userSettings");
-        }, done);
-    });
-
-    it('should load the plugin settings admin page correctly', function (done) {
-        expect.screenshot('admin_plugin_settings').to.be.capture(function (page) {
-            page.load("?" + generalParams + "&module=CoreAdminHome&action=pluginSettings");
-        }, done);
-    });
-
     it('should load the Manage > Websites admin page correctly', function (done) {
         expect.screenshot('admin_manage_websites').to.be.capture(function (page) {
             page.load("?" + generalParams + "&module=SitesManager&action=index");
@@ -322,6 +298,12 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
                     $(this).text('');
                 });
             });
+        }, done);
+    });
+
+    it('should load the user settings admin page correctly', function (done) {
+        expect.screenshot('admin_user_settings').to.be.capture(function (page) {
+            page.load("?" + generalParams + "&module=UsersManager&action=userSettings");
         }, done);
     });
 
@@ -346,6 +328,24 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     it('should load the Settings > Mobile Messaging admin page correctly', function (done) {
         expect.screenshot('admin_settings_mobilemessaging').to.be.capture(function (page) {
             page.load("?" + generalParams + "&module=MobileMessaging&action=index");
+        }, done);
+    });
+
+    it('should load the themes admin page correctly', function (done) {
+        expect.screenshot('admin_themes').to.be.capture(function (page) {
+            page.load("?" + generalParams + "&module=CorePluginsAdmin&action=themes");
+        }, done);
+    });
+
+    it('should load the security info admin page correctly', function (done) {
+        expect.screenshot('admin_security_info').to.be.capture(function (page) {
+            page.load("?" + generalParams + "&module=SecurityInfo&tests_hide_piwik_version=1");
+        }, done);
+    });
+
+    it('should load the plugin settings admin page correctly', function (done) {
+        expect.screenshot('admin_plugin_settings').to.be.capture(function (page) {
+            page.load("?" + generalParams + "&module=CoreAdminHome&action=pluginSettings");
         }, done);
     });
 
@@ -392,10 +392,39 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
-    // Multisites
+    // top bar pages
     it('should load the all websites dashboard correctly', function (done) {
         expect.screenshot('all_websites').to.be.capture(function (page) {
             page.load("?" + generalParams + "&module=MultiSites&action=index");
+        }, done);
+    });
+
+    it('should load the widgets listing page correctly', function (done) {
+        expect.screenshot('widgets_listing').to.be.capture(function (page) {
+            page.load("?" + generalParams + "module=Widgetize&action=index");
+            page.mouseMove('.widgetpreview-categorylist>li:contains(Visits Summary)');
+            page.mouseMove('li[uniqueid=widgetVisitsSummarygetEvolutionGraphcolumnsArray]');
+        }, done);
+    });
+
+    it('should load the API listing page correctly', function (done) {
+        expect.screenshot('api_listing').to.be.capture(function (page) {
+            page.load("?" + generalParams + "module=API&action=listAllAPI");
+            page.evaluate(function () { // remove token_auth since it can change on each test run
+                $('span#token_auth>strong').text('dummytokenauth');
+            });
+        }, done);
+    });
+
+    it('should load the email reports page correctly', function (done) {
+        expect.screenshot('email_reports').to.be.capture(function (page) {
+            page.load("?" + generalParams + "module=ScheduledReports&action=index");
+        }, done);
+    });
+
+    it('should load the feedback form when the feedback form link is clicked', function (done) {
+        expect.screenshot('feedback_form').to.be.capture(function (page) {
+            page.click('a#topmenu-feedback');
         }, done);
     });
 
