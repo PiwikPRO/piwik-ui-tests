@@ -401,15 +401,15 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
 
     it('should load the widgets listing page correctly', function (done) {
         expect.screenshot('widgets_listing').to.be.capture(function (page) {
-            page.load("?" + generalParams + "module=Widgetize&action=index");
+            page.load("?" + generalParams + "&module=Widgetize&action=index");
             page.mouseMove('.widgetpreview-categorylist>li:contains(Visits Summary)');
             page.mouseMove('li[uniqueid=widgetVisitsSummarygetEvolutionGraphcolumnsArray]');
-        }, done);
+        }, done);top
     });
 
     it('should load the API listing page correctly', function (done) {
         expect.screenshot('api_listing').to.be.capture(function (page) {
-            page.load("?" + generalParams + "module=API&action=listAllAPI");
+            page.load("?" + generalParams + "&module=API&action=listAllAPI");
             page.evaluate(function () { // remove token_auth since it can change on each test run
                 $('span#token_auth>strong').text('dummytokenauth');
             });
@@ -418,7 +418,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
 
     it('should load the email reports page correctly', function (done) {
         expect.screenshot('email_reports').to.be.capture(function (page) {
-            page.load("?" + generalParams + "module=ScheduledReports&action=index");
+            page.load("?" + generalParams + "&module=ScheduledReports&action=index");
         }, done);
     });
 
