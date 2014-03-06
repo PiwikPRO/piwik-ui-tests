@@ -68,4 +68,119 @@ describe("SegmentSelectorEditorTest", function () {
             page.click('.add_new_segment');
         }, done);
     });
+
+    it("should add new segment expression when segment dimension drag dropped", function (done) {
+        expect.screenshot("dimension_drag_drop").to.be.capture(function (page) {
+            page.click('.segmentEditorPanel .metric_category:contains(Actions)');
+            page.dragDrop('.segmentEditorPanel li[data-metric=entryPageUrl]', '.segmentEditorPanel .ui-droppable');
+        }, done);
+    });
+
+    // phantomjs won't take screenshots of dropdown windows, so skip this test
+    it.skip("should show suggested segment values when a segment value input is focused", function (done) {
+        expect.screenshot("suggested_values").to.be.capture(function (page) {
+            page.click('.segmentEditorPanel .ui-autocomplete-input');
+        }, done);
+    });
+
+    it("should add an OR condition when a segment dimension is dragged to the OR placeholder section", function (done) {
+        expect.screenshot("drag_or_condition").to.be.capture(function (page) {
+            page.dragDrop('.segmentEditorPanel li[data-metric=entryPageTitle]', '.segmentEditorPanel .segment-add-or .ui-droppable');
+        }, done);
+    });
+
+    it("should add an AND condition when a segment dimension is dragged to the AND placeholder section", function (done) {
+        expect.screenshot("drag_and_condition").to.be.capture(function (page) {
+            page.dragDrop('.segmentEditorPanel li[data-metric=pageTitle]', '.segmentEditorPanel .segment-add-row .ui-droppable');
+        }, done);
+    });
+
+    it("should save a new segment and add it to the segment list when the form is filled out and the save button is clicked", function (done) {
+        expect.screenshot("saved").to.be.capture(function (page) {
+            page.evaluate(function () {
+                $('.metricMatchBlock>select').each(function () {
+                    $(this).val('==');
+                });
+
+                $('.metricValueBlock>input').each(function (index) {
+                    $(this).val('value ' + index);
+                });
+            });
+
+            page.sendKeys('input.edit_segment_name', 'new segment');
+            page.click('.segmentEditorPanel .metric_category:contains(Actions)'); // click somewhere else to save new name
+
+            page.click('button.saveAndApply');
+
+            page.click('.segmentationContainer');
+        }, done);
+    });
+
+    it("should show the new segment after page reload", function (done) {
+        expect.screenshot("saved").to.be.capture("saved_reload", function (page) {
+            page.reload();
+            page.click('.segmentationContainer');
+        }, done);
+    });
+
+    it("should correctly load the new segment's details when the new segment is edited", function (done) {
+        expect.screenshot("saved_details").to.be.capture(function (page) {
+            page.click('.segmentList li[data-idsegment=4] .editSegment');
+        }, done);
+    });
+
+    it("should correctly update the segment when its details are changed and saved", function (done) {
+        expect.screenshot("updated").to.be.capture(function (page) {
+            page.click('.segmentEditorPanel .editSegmentName');
+            page.evaluate(function () {
+                $('input.edit_segment_name').val('');
+            });
+            page.sendKeys('input.edit_segment_name', 'edited segment');
+            page.click('.segmentEditorPanel .metric_category:contains(Actions)'); // click somewhere else to save new name
+
+            page.evaluate(function () {
+                $('.metricMatchBlock>select').each(function () {
+                    $(this).val('!=');
+                });
+
+                $('.metricValueBlock>input').each(function (index) {
+                    $(this).val('new value ' + index);
+                });
+            });
+
+            page.click('button.saveAndApply');
+
+            page.click('.segmentationContainer');
+        }, done);
+    });
+
+    it("should show the updated segment after page reload", function (done) {
+        expect.screenshot("updated").to.be.capture("updated_reload", function (page) {
+            page.reload();
+            page.click('.segmentationContainer');
+        }, done);
+    });
+
+    it("should correctly load the updated segment's details when the updated segment is edited", function (done) {
+        expect.screenshot("updated_details").to.be.capture(function (page) {
+            page.click('.segmentList li[data-idsegment=4] .editSegment');
+        }, done);
+    });
+
+    it("should correctly remove the segment when the delete link is clicked", function (done) {
+        expect.screenshot('deleted').to.be.capture(function (page) {
+            page.click('.segmentList li[data-idsegment=4] .editSegment');
+            page.click('.segmentEditorPanel a.delete');
+            page.click('.ui-dialog button>span:contains(Yes):visible');
+
+            page.click('.segmentationContainer');
+        }, done);
+    });
+
+    it("should not show the deleted segment after page reload", function (done) {
+        expect.screenshot('deleted').to.be.capture('deleted_reload', function (page) {
+            page.reload();
+            page.click('.segmentationContainer');
+        }, done);
+    });
 });
