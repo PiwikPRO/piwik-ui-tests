@@ -9,11 +9,11 @@ php:
 # Separate different test suites
 env:
   matrix:
-    - TEST_DIR=UI MYSQL_ADAPTER=PDO_MYSQL
+    - TEST_DIR=UITests MYSQL_ADAPTER=PDO_MYSQL
   global:
     secure: "hP311AESUk7TDp8qS8YgM6PCaY8lSQFBbW+d/jqbeyJCW0FJez7E2kpyu/Yf\nlbLpq63bj9Cz/psprEeo02GQvSjaHxSdJFY7uxUDszieFIhrAoTPYkDrpblb\nUyVGH/fOTl8NkukgW8TsF+po/4sQnqLVAeWyUOuSY6M7ZRjBdSQ="
 
-script: ./UI/travis.sh
+script: ./travis.sh
 
 before_script:
   - sudo apt-get install -y imagemagick
