@@ -24,6 +24,7 @@ before_script:
   - uname -a
   - date
   - phantomjs --version
+  - fc-match sans-serif
   - php -r "var_dump(gd_info());"
   - mysql -e 'create database piwik_tests;'
   - ./tests/travis/prepare.sh
