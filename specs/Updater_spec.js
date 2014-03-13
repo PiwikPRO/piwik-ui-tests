@@ -29,6 +29,7 @@ describe("Updater", function () {
             page.click('.submit');
             page.evaluate(function () {
                 $('#widgetLivewidget').hide();
+                $('.jqplot-xaxis').hide(); // xaxis will change every day so hide it
             });
         }, done);
     });

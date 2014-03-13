@@ -21,12 +21,4 @@ class UpdaterTestFixture extends \Piwik_Test_Fixture_SqlDump
 
         parent::performSetUp($testCase, $setupEnvironmentOnly);
     }
-
-    public function setUp()
-    {
-        parent::setUp();
-
-        $this->testEnvironment->tablesPrefix = 'piwik_';
-        $this->testEnvironment->save();
-    }
 }

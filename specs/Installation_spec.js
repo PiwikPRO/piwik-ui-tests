@@ -16,6 +16,7 @@ describe("Installation", function () {
     before(function () {
         testEnvironment.configFileLocal = "/tmp/newInstallConfig.ini.php";
         testEnvironment.dontUseTestConfig = true;
+        testEnvironment.tablesPrefix = 'piwik_';
         testEnvironment.save();
 
         var wholePath = path.join(PIWIK_INCLUDE_PATH, testEnvironment.configFileLocal);
@@ -27,6 +28,7 @@ describe("Installation", function () {
     after(function () {
         delete testEnvironment.configFileLocal;
         delete testEnvironment.dontUseTestConfig;
+        delete testEnvironment.tablesPrefix;
         testEnvironment.save();
     });
 
@@ -87,6 +89,7 @@ describe("Installation", function () {
             page.sendKeys('input[name=password_bis]', 'thepassword');
             page.sendKeys('input[name=email]', 'hello@piwik.org');
             page.click('.submit');
+            page.wait(2000);
         }, done);
     });
 
@@ -105,6 +108,7 @@ describe("Installation", function () {
                 $('select[name=ecommerce]').val('1');
             });
             page.click('.submit');
+            page.wait(2000);
         }, done);
     });
 
@@ -117,6 +121,9 @@ describe("Installation", function () {
     it("should load piwik successfully when next is clicked on the congratulations page", function (done) {
         expect.screenshot("done").to.be.capture(function (page) {
             page.click('.submit');
+            page.evaluate(function () {
+                $('.jqplot-xaxis').hide(); // xaxis will change every day so hide it
+            });
         }, done);
     });
 });
