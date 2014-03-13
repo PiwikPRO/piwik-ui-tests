@@ -12,6 +12,11 @@ describe("Updater", function () {
 
     this.fixture = "Piwik\\Tests\\Fixtures\\UpdaterTestFixture";
 
+    before(function () {
+        testEnvironment.tablesPrefix = 'piwik_';
+        testEnvironment.save();
+    });
+
     it("should start the updater when an old version of Piwik is detected in the DB", function (done) {
         expect.screenshot("main").to.be.capture(function (page) {
             page.load("");
