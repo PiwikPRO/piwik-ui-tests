@@ -20,6 +20,7 @@ before_script:
   - ./getpiwik.sh
   - cd ../piwik
   - ls
+  - composer self-update
   - composer install
   - uname -a
   - date
