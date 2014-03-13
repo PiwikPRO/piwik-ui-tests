@@ -89,7 +89,7 @@ describe("Installation", function () {
             page.sendKeys('input[name=password_bis]', 'thepassword');
             page.sendKeys('input[name=email]', 'hello@piwik.org');
             page.click('.submit');
-            page.wait(2000);
+            page.wait(3000);
         }, done);
     });
 
@@ -108,7 +108,7 @@ describe("Installation", function () {
                 $('select[name=ecommerce]').val('1');
             });
             page.click('.submit');
-            page.wait(2000);
+            page.wait(3000);
         }, done);
     });
 
