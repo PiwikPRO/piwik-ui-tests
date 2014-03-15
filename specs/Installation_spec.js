@@ -118,12 +118,4 @@ describe("Installation", function () {
         }, done);
     });
 
-    it("should load piwik successfully when next is clicked on the congratulations page", function (done) {
-        expect.screenshot("done").to.be.capture(function (page) {
-            page.click('.submit');
-            page.evaluate(function () {
-                $('.jqplot-xaxis').hide(); // xaxis will change every day so hide it
-            });
-        }, done);
-    });
 });
