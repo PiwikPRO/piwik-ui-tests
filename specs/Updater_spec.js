@@ -29,13 +29,4 @@ describe("Updater", function () {
         }, done);
     });
 
-    it("should continue to Piwik when 'continue to Piwik' is clicked", function (done) {
-        expect.screenshot("done").to.be.capture(function (page) {
-            page.click('.submit');
-            page.evaluate(function () {
-                $('#widgetLivewidget').hide();
-                $('.jqplot-xaxis').hide(); // xaxis will change every day so hide it
-            });
-        }, done);
-    });
 });
