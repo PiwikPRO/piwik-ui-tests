@@ -16,7 +16,7 @@ describe("Dashboard", function () {
 
     var removeAllExtraDashboards = function (done) {
         testEnvironment.callController("Dashboard.getAllDashboards", {}, function (err, dashboards) {
-            dashboards = dashboards.filter(function (dash) {
+            dashboards = (dashboards || []).filter(function (dash) {
                 return parseInt(dash.iddashboard) > 5;
             });
 
@@ -189,6 +189,7 @@ describe("Dashboard", function () {
             page.click('.dashboard-manager');
             page.click('li[data-action=removeDashboard]');
             page.click('.ui-dialog[aria-describedby=removeDashboardConfirm] button>span:contains(Yes)');
+            page.mouseMove('.dashboard-manager');
             page.evaluate(function () {
                 $('.widgetTop').removeClass('widgetTopHover');
             });

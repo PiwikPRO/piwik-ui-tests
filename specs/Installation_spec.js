@@ -6,23 +6,116 @@
  * @link http://piwik.org
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
+var fs = require('fs');
 
 describe("Installation", function () {
     this.timeout(0);
 
-    afterEach(function () {
+    this.fixture = null;
+
+    before(function () {
+        testEnvironment.configFileLocal = "/tmp/newInstallConfig.ini.php";
+        testEnvironment.dontUseTestConfig = true;
+        testEnvironment.tablesPrefix = 'piwik_';
+        testEnvironment.save();
+
+        var wholePath = path.join(PIWIK_INCLUDE_PATH, testEnvironment.configFileLocal);
+        if (fs.exists(wholePath)) {
+            fs.remove(wholePath);
+        }
+    });
+
+    after(function () {
         delete testEnvironment.configFileLocal;
+        delete testEnvironment.dontUseTestConfig;
+        delete testEnvironment.tablesPrefix;
         testEnvironment.save();
     });
 
     it("should display an error message when trying to access a resource w/o a config.ini.php file", function (done) {
-        testEnvironment.configFileLocal = "/non/existing/location";
-        testEnvironment.save();
-
         expect.screenshot("access_no_config").to.be.capture(function (page) {
-            page.load("index.php?module=CoreHome&action=index");
+            page.load("?module=CoreHome&action=index");
         }, done);
     });
 
-    // TODO: fill out rest of installation test
+    it("should start the installation process when the index is visited w/o a config.ini.php file", function (done) {
+        expect.screenshot("start").to.be.capture(function (page) {
+            page.load("");
+        }, done);
+    });
+
+    it("should display the system check page when next is clicked on the first page", function (done) {
+        expect.screenshot("system_check").to.be.capture(function (page) {
+            page.click('.submit');
+        }, done);
+    });
+
+    it("should display the database setup page when next is clicked on the system check page", function (done) {
+        expect.screenshot("db_setup").to.be.capture(function (page) {
+            page.click('.submit');
+        }, done);
+    });
+
+    it("should fail when the next button is clicked and no database info is entered in the form", function (done) {
+        expect.screenshot("db_setup_fail").to.be.capture(function (page) {
+            page.click('.submit');
+        }, done);
+    });
+
+    it("should display the tables created page when next is clicked on the db setup page w/ correct info entered in the form", function (done) {
+        expect.screenshot("db_created").to.be.capture(function (page) {
+            page.sendKeys('input[name=username]', 'root');
+            page.sendKeys('input[name=dbname]', 'newdb');
+            page.click('.submit');
+        }, done);
+    });
+
+    it("should display the superuser configuration page when next is clicked on the tables created page", function (done) {
+        expect.screenshot("superuser").to.be.capture(function (page) {
+            page.click('.submit');
+        }, done);
+    });
+
+    it("should fail when incorrect information is entered in the superuser configuration page", function (done) {
+        expect.screenshot("superuser_fail").to.be.capture(function (page) {
+            page.click('.submit');
+        }, done);
+    });
+
+    it("should display the setup a website page when next is clicked on the filled out superuser config page", function (done) {
+        expect.screenshot("setup_website").to.be.capture(function (page) {
+            page.sendKeys('input[name=login]', 'thesuperuser');
+            page.sendKeys('input[name=password]', 'thepassword');
+            page.sendKeys('input[name=password_bis]', 'thepassword');
+            page.sendKeys('input[name=email]', 'hello@piwik.org');
+            page.click('.submit');
+            page.wait(3000);
+        }, done);
+    });
+
+    it("should should fail when incorrect information is entered in the setup a website page", function (done) {
+        expect.screenshot("setup_website_fail").to.be.capture(function (page) {
+            page.click('.submit');
+        }, done);
+    });
+
+    it("should display the javascript tracking page when correct information is entered in the setup website page and next is clicked", function (done) {
+        expect.screenshot("js_tracking").to.be.capture(function (page) {
+            page.sendKeys('input[name=siteName]', 'Serenity');
+            page.sendKeys('input[name=url]', 'serenity.com');
+            page.evaluate(function () {
+                $('select[name=timezone]').val('Europe/Paris');
+                $('select[name=ecommerce]').val('1');
+            });
+            page.click('.submit');
+            page.wait(3000);
+        }, done);
+    });
+
+    it("should display the congratulations page when next is clicked on the javascript tracking page", function (done) {
+        expect.screenshot("congrats").to.be.capture(function (page) {
+            page.click('.submit');
+        }, done);
+    });
+
 });

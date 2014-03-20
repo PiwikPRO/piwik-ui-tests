@@ -20,10 +20,13 @@ before_script:
   - ./getpiwik.sh
   - cd ../piwik
   - ls
+  - composer self-update
   - composer install
   - uname -a
   - date
   - phantomjs --version
+  - fc-match sans-serif
+  - fc-match Verdana
   - php -r "var_dump(gd_info());"
   - mysql -e 'create database piwik_tests;'
   - ./tests/travis/prepare.sh
