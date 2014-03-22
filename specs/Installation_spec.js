@@ -14,14 +14,13 @@ describe("Installation", function () {
     this.fixture = null;
 
     before(function () {
-        testEnvironment.configFileLocal = "/tmp/newInstallConfig.ini.php";
+        testEnvironment.configFileLocal = path.join(PIWIK_INCLUDE_PATH, "/tmp/newInstallConfig.ini.php");
         testEnvironment.dontUseTestConfig = true;
         testEnvironment.tablesPrefix = 'piwik_';
         testEnvironment.save();
 
-        var wholePath = path.join(PIWIK_INCLUDE_PATH, testEnvironment.configFileLocal);
-        if (fs.exists(wholePath)) {
-            fs.remove(wholePath);
+        if (fs.exists(testEnvironment.configFileLocal)) {
+            fs.remove(testEnvironment.configFileLocal);
         }
     });
 
