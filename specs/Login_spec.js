@@ -37,7 +37,7 @@ describe("Login", function () {
     });
 
     it("should redirect to Piwik when correct credentials are supplied", function (done) {
-        expect.screenshot("login_success").to.be.capture(function (page) {
+        expect.current_page.contains("#dashboard", function (page) {
             page.sendKeys("#login_form_login", "superUserLogin");
             page.sendKeys("#login_form_password", "superUserPass");
             page.click("#login_form_submit");
@@ -77,8 +77,7 @@ describe("Login", function () {
     });
 
     it("should login successfully when new credentials used", function (done) {
-        expect.screenshot("login_success").to.be.capture("login_success_new_credentials", function (page) {
-            page.load("");
+        expect.page("").contains("#dashboard", function (page) {
             page.sendKeys("#login_form_login", "superUserLogin");
             page.sendKeys("#login_form_password", "superUserPass2");
             page.click("#login_form_submit");
