@@ -425,6 +425,12 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     it('should load the feedback form when the feedback form link is clicked', function (done) {
         expect.screenshot('feedback_form').to.be.capture(function (page) {
             page.click('a#topmenu-feedback');
+            page.evaluate(function () {
+                $('*').each(function () {
+                    var replace = $(this).text().replace(/(\d+\.)?(\d+\.)?(\d+)(-[a-z]\d+)?/g, '');
+                    $(this).text(replace);
+                });
+            });
         }, done);
     });
 

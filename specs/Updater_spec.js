@@ -20,6 +20,12 @@ describe("Updater", function () {
     it("should start the updater when an old version of Piwik is detected in the DB", function (done) {
         expect.screenshot("main").to.be.capture(function (page) {
             page.load("");
+            page.evaluate(function () {
+                $('*').each(function () {
+                    var replace = $(this).text().replace(/(\d+\.)?(\d+\.)?(\d+)(-[a-z]\d+)?/g, '');
+                    $(this).text(replace);
+                });
+            });
         }, done);
     });
 
@@ -28,5 +34,4 @@ describe("Updater", function () {
             page.click('.submit');
         }, done);
     });
-
 });
