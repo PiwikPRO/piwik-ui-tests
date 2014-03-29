@@ -21,9 +21,9 @@ describe("Updater", function () {
         expect.screenshot("main").to.be.capture(function (page) {
             page.load("");
             page.evaluate(function () {
-                $('*').each(function () {
-                    var replace = $(this).text().replace(/(\d+\.)?(\d+\.)?(\d+)(-[a-z]\d+)?/g, '');
-                    $(this).text(replace);
+                $('p').each(function () {
+                    var replace = $(this).html().replace(/\d+\.\d+(\.\d+)?(-[a-z]\d+)?/g, '');
+                    $(this).html(replace);
                 });
             });
         }, done);

@@ -426,9 +426,11 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         expect.screenshot('feedback_form').to.be.capture(function (page) {
             page.click('a#topmenu-feedback');
             page.evaluate(function () {
-                $('*').each(function () {
-                    var replace = $(this).text().replace(/(\d+\.)?(\d+\.)?(\d+)(-[a-z]\d+)?/g, '');
-                    $(this).text(replace);
+                $('h2 span').each(function () {
+                    if ($(this).text().indexOf("Piwik") !== -1) {
+                        var replace = $(this).text().replace(/Piwik\s*\d+\.\d+(\.\d+)?(-[a-z]\d+)?/g, 'Piwik');
+                        $(this).text(replace);
+                    }
                 });
             });
         }, done);
