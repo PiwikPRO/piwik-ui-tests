@@ -1,2 +1,2 @@
-7a98becbec6bf32038549c879b4f6cfda3a7b77d
+e380ce2246173ab0dda603dc2eb515711ea2e34b
 DeviceDetectorIntegration
