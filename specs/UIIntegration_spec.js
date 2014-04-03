@@ -337,6 +337,12 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
+    it('should load the plugins admin page correctly', function (done) {
+        expect.screenshot('admin_plugins').to.be.capture(function (page) {
+            page.load("?" + generalParams + "&module=CorePluginsAdmin&action=plugins");
+        }, done);
+    });
+
     it('should load the security info admin page correctly', function (done) {
         expect.screenshot('admin_security_info').to.be.capture(function (page) {
             page.load("?" + generalParams + "&module=SecurityInfo&tests_hide_piwik_version=1");
