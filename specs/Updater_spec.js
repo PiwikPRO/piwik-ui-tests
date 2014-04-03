@@ -22,7 +22,7 @@ describe("Updater", function () {
             page.load("");
             page.evaluate(function () {
                 $('p').each(function () {
-                    var replace = $(this).html().replace(/\d+\.\d+(\.\d+)?(-[a-z]\d+)?/g, '');
+                    var replace = $(this).html().replace(/(?!1\.0)\d+\.\d+(\.\d+)?(-[a-z]\d+)?/g, '');
                     $(this).html(replace);
                 });
             });
