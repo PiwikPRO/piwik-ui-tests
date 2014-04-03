@@ -1,2 +1,2 @@
-329a1a47f64b3f7688c6aee9f9230be33c8d4a4e
-DeviceDetectorIntegration
+34da04edb32b0029f2bd261c8911a735c7cf3c11
+master
