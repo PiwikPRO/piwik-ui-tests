@@ -13,12 +13,12 @@ use \Exception;
 
 class UpdaterTestFixture extends \Piwik_Test_Fixture_SqlDump
 {
-    public function performSetUp($testCase, $setupEnvironmentOnly = false)
+    public function performSetUp($setupEnvironmentOnly = false)
     {
         $this->dumpUrl = PIWIK_INCLUDE_PATH . "/tests/PHPUnit/UI/resources/piwik1.0.sql.gz";
         $this->dropDatabaseInSetUp = true;
         $this->resetPersistedFixture = true;
 
-        parent::performSetUp($testCase, $setupEnvironmentOnly);
+        parent::performSetUp($setupEnvironmentOnly);
     }
 }
