@@ -298,7 +298,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
                     $(this).text('');
                 });
                 $('td#last_seen').each(function () {
-                    $(this).text( $(this).text().replace(/[0-9]/g, "*") )
+                    $(this).text( '' )
                 });
             });
         }, done);
