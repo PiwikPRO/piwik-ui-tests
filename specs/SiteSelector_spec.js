@@ -38,7 +38,8 @@ describe("SiteSelector", function () {
         }, done);
     });
 
-    it("should search again when second character typed into search input", function (done) {
+    // Test is skipped as it randomly fails http://builds-artifacts.piwik.org/ui-tests.master/2295.1/screenshot-diffs/diffviewer.html
+    it.skip("should search again when second character typed into search input", function (done) {
         expect.screenshot("search_two_chars").to.be.capture(function (page) {
             page.sendKeys(".websiteSearch", "st");
             page.wait(3000);
