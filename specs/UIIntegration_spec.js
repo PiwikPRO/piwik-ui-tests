@@ -37,6 +37,9 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     it("should load dashboard1 correctly", function (done) {
         expect.screenshot("dashboard1").to.be.capture(function (page) {
             page.load("?" + urlBase + "#" + generalParams + "&module=Dashboard&action=embeddedIndex&idDashboard=1");
+
+            // Prevent random sizing error eg. http://builds-artifacts.piwik.org/ui-tests.master/2301.1/screenshot-diffs/diffviewer.html
+            $("[widgetid=widgetActionsgetOutlinks] .widgetContent").text('Displays different at random -> hidden');
         }, done);
     });
 
