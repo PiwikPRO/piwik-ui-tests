@@ -38,7 +38,8 @@ describe("ActionsDataTable", function () {
         }, done);
     });
 
-    it("should exclude low population rows when exclude low population link clicked", function (done) {
+    // Test is skipped as it randomly fails http://builds-artifacts.piwik.org/ui-tests.master/2433.1/screenshot-diffs/diffviewer.html
+    it.skip("should exclude low population rows when exclude low population link clicked", function (done) {
         expect.screenshot('exclude_low_population').to.be.capture(function (page) {
             page.mouseMove('.tableConfiguration');
             page.click('.dataTableExcludeLowPopulation');
