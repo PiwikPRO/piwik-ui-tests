@@ -48,6 +48,10 @@ describe("ActionsDataTable", function () {
 
     it("should load normal view when switch to view hierarchical view link is clicked", function (done) {
         expect.screenshot('unflattened').to.be.capture(function (page) {
+            // exclude low population (copied from exclude_low_population test above as it was 'skipped')
+            page.mouseMove('.tableConfiguration');
+            page.click('.dataTableExcludeLowPopulation');
+
             page.mouseMove('.tableConfiguration');
             page.click('.dataTableFlatten');
         }, done);
