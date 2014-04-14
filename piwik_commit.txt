@@ -1,2 +1,2 @@
 e3efda0492c51cfb786f67419ea3a94c76f15e25
-master
+2.2.0-rc2
