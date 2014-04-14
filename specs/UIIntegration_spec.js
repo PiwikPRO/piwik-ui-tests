@@ -442,7 +442,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
             page.evaluate(function () {
                 $('h2 span').each(function () {
                     if ($(this).text().indexOf("Piwik") !== -1) {
-                        var replace = $(this).text().replace(/Piwik\s*\d+\.\d+(\.\d+)?(-[a-z]\d+)?/g, 'Piwik');
+                        var replace = $(this).text().replace(/Piwik\s*\d+\.\d+(\.\d+)?([\-a-z]*\d+)?/g, 'Piwik');
                         $(this).text(replace);
                     }
                 });
