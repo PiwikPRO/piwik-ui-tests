@@ -33,13 +33,13 @@ describe("Installation", function () {
 
     it("should display an error message when trying to access a resource w/o a config.ini.php file", function (done) {
         expect.screenshot("access_no_config").to.be.capture(function (page) {
-            page.load("?module=CoreHome&action=index&ignoreClearAllViewDataTableParameters=1");
+            page.load("?module=CoreHome&action=index");
         }, done);
     });
 
     it("should start the installation process when the index is visited w/o a config.ini.php file", function (done) {
         expect.screenshot("start").to.be.capture(function (page) {
-            page.load("?ignoreClearAllViewDataTableParameters=1");
+            page.load("");
         }, done);
     });
 
