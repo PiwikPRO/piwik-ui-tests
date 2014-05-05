@@ -13,8 +13,13 @@ describe("Updater", function () {
     this.fixture = "Piwik\\Tests\\Fixtures\\UpdaterTestFixture";
 
     before(function () {
+        testEnvironment.configFileLocal = path.join(PIWIK_INCLUDE_PATH, "/config/config.ini.php");
         testEnvironment.tablesPrefix = 'piwik_';
         testEnvironment.save();
+
+        if (fs.exists(testEnvironment.configFileLocal)) {
+            fs.remove(testEnvironment.configFileLocal);
+        }
     });
 
     it("should start the updater when an old version of Piwik is detected in the DB", function (done) {
