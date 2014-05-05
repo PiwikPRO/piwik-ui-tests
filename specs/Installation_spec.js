@@ -14,7 +14,7 @@ describe("Installation", function () {
     this.fixture = null;
 
     before(function () {
-        testEnvironment.configFileLocal = path.join(PIWIK_INCLUDE_PATH, "/tmp/newInstallConfig.ini.php");
+        testEnvironment.configFileLocal = path.join(PIWIK_INCLUDE_PATH, "/config/config.ini.php");
         testEnvironment.dontUseTestConfig = true;
         testEnvironment.tablesPrefix = 'piwik_';
         testEnvironment.save();
@@ -39,7 +39,7 @@ describe("Installation", function () {
 
     it("should start the installation process when the index is visited w/o a config.ini.php file", function (done) {
         expect.screenshot("start").to.be.capture(function (page) {
-            page.load("?ignoreClearAllViewDataTableParameters=1&testWelcome=1");
+            page.load("?ignoreClearAllViewDataTableParameters=1");
         }, done);
     });
 
