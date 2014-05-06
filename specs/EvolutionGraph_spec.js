@@ -83,6 +83,12 @@ describe("EvolutionGraph", function () {
     it("should show add annotation form when create annotation clicked", function (done) {
         expect.screenshot('new_annotation_form').to.be.capture(function (page) {
             page.click('.add-annotation');
+            page.click('.annotation-period-edit>a');
+            page.evaluate(function () {
+                $('.ui-datepicker-month option[value=1]').prop('selected', true);
+                $('.ui-datepicker-year option[value=2012]').prop('selected', true);
+                $('.ui-datepicker-calendar td a:contains(12)').click();
+            });
         }, done);
     });
 
