@@ -85,7 +85,7 @@ describe("EvolutionGraph", function () {
             page.click('.add-annotation');
             page.click('.annotation-period-edit>a');
             page.evaluate(function () {
-                $('.datepicker').datepicker("setDate", new Date(2014,0,12) );
+                $('.datepicker').datepicker("setDate", new Date(2012,0,02) );
                 $(".ui-datepicker-current-day").trigger("click"); // this triggers onSelect event which sets .annotation-period-edit>a
             });
         }, done);
