@@ -85,9 +85,8 @@ describe("EvolutionGraph", function () {
             page.click('.add-annotation');
             page.click('.annotation-period-edit>a');
             page.evaluate(function () {
-                $('.ui-datepicker-month option[value=1]').prop('selected', true);
-                $('.ui-datepicker-year option[value=2012]').prop('selected', true);
-                $('.ui-datepicker-calendar td a:contains(12)').click();
+                $('.datepicker').datepicker("setDate", new Date(2014,0,12) );
+                $(".ui-datepicker-current-day").trigger("click"); // this triggers onSelect event which sets .annotation-period-edit>a
             });
         }, done);
     });
