@@ -95,7 +95,6 @@ describe("Installation", function () {
     it("should should fail when incorrect information is entered in the setup a website page", function (done) {
         expect.screenshot("setup_website_fail").to.be.capture(function (page) {
             page.click('.submit');
-            page.wait(3000);
         }, done);
     });
 
