@@ -8,9 +8,6 @@
 
 namespace Piwik\Tests\Fixtures;
 
-use \Piwik\Config;
-use \Exception;
-
 class UpdaterTestFixture extends \Piwik_Test_Fixture_SqlDump
 {
     public function performSetUp($setupEnvironmentOnly = false)
