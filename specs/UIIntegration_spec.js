@@ -436,6 +436,13 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
+    it('should load show the user menu when userLogin link is clicked', function (done) {
+        expect.screenshot('usermenu_opened').to.be.capture(function (page) {
+            page.click('#userMenu .title');
+            page.wait(400);
+        }, done);
+    });
+
     it('should load the feedback form when the feedback form link is clicked', function (done) {
         expect.screenshot('feedback_form').to.be.capture(function (page) {
             page.click('a#usermenu-feedback-index');
@@ -447,13 +454,6 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
                     }
                 });
             });
-        }, done);
-    });
-
-    it('should load show the user menu when userLogin link is clicked', function (done) {
-        expect.screenshot('usermenu_opened').to.be.capture(function (page) {
-            page.click('#userMenu .title');
-            page.wait(400);
         }, done);
     });
 
