@@ -438,7 +438,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
 
     it('should load the feedback form when the feedback form link is clicked', function (done) {
         expect.screenshot('feedback_form').to.be.capture(function (page) {
-            page.click('a#topmenu-feedback');
+            page.click('a#usermenu-feedback-index');
             page.evaluate(function () {
                 $('h2 span').each(function () {
                     if ($(this).text().indexOf("Piwik") !== -1) {
@@ -447,6 +447,13 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
                     }
                 });
             });
+        }, done);
+    });
+
+    it('should load show the user menu when userLogin link is clicked', function (done) {
+        expect.screenshot('usermenu_opened').to.be.capture(function (page) {
+            page.click('#userMenu .title');
+            page.wait(400);
         }, done);
     });
 
