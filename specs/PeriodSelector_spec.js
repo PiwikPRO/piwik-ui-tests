@@ -10,8 +10,7 @@
 describe("PeriodSelector", function () {
     this.timeout(0);
 
-    var url = "?module=Widgetize&action=iframe&moduleToWidgetize=CoreHome&actionToWidgetize=getPeriodSelector&"
-            + "&idSite=1&period=day&date=2012-01-01";
+    var url = "?module=CoreHome&action=index&idSite=1&period=day&date=2012-01-01";
 
     it("should load correctly", function (done) {
         expect.screenshot("loaded").to.be.captureSelector('#periodString', function (page) {
