@@ -1,2 +1,2 @@
 c4785eea53b15ed9c0e55bf895af01e8e7612382
-master
+2.4.0-b2
