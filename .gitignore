@@ -2,7 +2,8 @@ processed-ui-screenshots/*.png
 processed-ui-screenshots/**/*.png
 processed-ui-screenshots
 screenshot-diffs/*.png
-screenshot-diffs/*.html
-screenshot-diffs
+screenshot-diffs/diff*.html
+screenshot-diffs/jquery.js
+screenshot-diffs/resemble.js
 .idea/*
 php_errors.log
