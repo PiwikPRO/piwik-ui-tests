@@ -12,7 +12,7 @@ describe("DashboardManager", function () {
     this.timeout(0);
 
     var selectorToCapture = '.dashboard-manager';
-    var url = "?module=CoreHome&action=index&idSite=1&period=day&date=2012-01-01&includeWidgetFactory=1";
+    var url = "?module=CoreHome&action=index&idSite=1&period=day&date=2012-01-01";
 
     it("should load correctly", function (done) {
         expect.screenshot("loaded").to.be.captureSelector(selectorToCapture, function (page) {
