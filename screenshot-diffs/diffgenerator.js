@@ -24,7 +24,7 @@ function compareImages(expected, expectedGithub, processed)
     });
 
     $('.expected')[0].src = expected;
-    $('.expectedGithub')[0].src = expectedGithub;
+    $('.expectedGithub')[0].src = 'https://raw.githubusercontent.com/piwik/piwik-ui-tests/master/expected-ui-screenshots/' + expectedGithub;
     $('.processed')[0].src = processed;
 }
 
