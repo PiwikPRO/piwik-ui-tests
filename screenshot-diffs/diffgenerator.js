@@ -23,9 +23,9 @@ function compareImages(expected, expectedGithub, processed)
         $('.diff').attr('src', data.getImageDataUrl());
     });
 
-    $('.expected')[0].src = expected;
-    $('.expectedGithub')[0].src = 'https://raw.githubusercontent.com/piwik/piwik-ui-tests/master/expected-ui-screenshots/' + expectedGithub;
-    $('.processed')[0].src = processed;
+    $('.processed').attr('src', encodeURI(processed));
+    $('.expected').attr('src', encodeURI(expected));
+    $('.expectedGithub').attr('src', 'https://raw.githubusercontent.com/piwik/piwik-ui-tests/master/expected-ui-screenshots/' + encodeURI(expectedGithub));
 }
 
 function getUrlQueryParam(sParam) {
@@ -34,9 +34,9 @@ function getUrlQueryParam(sParam) {
 
     for (var index = 0; index < variables.length; index++) {
 
-        var sParameterName = variables[index].split('=');
-        if (sParameterName[0] == sParam) {
-            return sParameterName[1];
+        var paramName = variables[index].split('=');
+        if (paramName[0] == sParam) {
+            return paramName[1];
         }
     }
 }
