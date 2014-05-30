@@ -1,2 +1,2 @@
-55f53dadc058bc0592df9ca812b72d7d885fd21e
+4d8fedfde58bfed15fd0041cffd57ce3b6ca4776
 DeviceDetector2
