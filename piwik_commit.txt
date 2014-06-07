@@ -1,2 +1,2 @@
-5ab4f2ce3d85c45edb077d50fdd3201398082b78
-DeviceDetector2
+57c7c45cea99bc47346e423a3d6c5c474a88c5a9
+master
