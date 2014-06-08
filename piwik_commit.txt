@@ -1,2 +1,2 @@
-553102a279c4bfdb7c7b04840d2e30cf0da3b44e
-master
+52d0f24eea594e35c365a392c3d2ef69ca55dedd
+plugin_widget_refactoring
