@@ -1,2 +1,2 @@
-32f996a30f3b9ea4b794059c7bfd08d81ab072ea
-DeviceDetector2
+f123b7b1b39aba5f60c0e6844a93fe7d3676ea7f
+2.4.0-b6
