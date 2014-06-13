@@ -29,6 +29,10 @@ before_script:
   - fc-match Verdana
   - php -r "var_dump(gd_info());"
   - mysql -e 'create database piwik_tests;'
+  # Make sure we use Python 2.6
+  - sudo add-apt-repository ppa:fkrull/deadsnakes -y
+  - sudo apt-get update
+  - sudo apt-get install python2.6 python2.6-dev
   - ./tests/travis/prepare.sh
   - ./tests/travis/setup_webserver.sh
   - cd tests/PHPUnit
@@ -41,6 +45,11 @@ after_script:
   - ./tests/travis/upload_artifacts.sh
 
 notifications:
+  slack:
+    rooms:
+      - piwik:3HWhNh21qPfDACQXTrJOb0mW
+      - piwikpro:7OABSbDrywSTo2nv9lD2svXG
+
   irc:
     skip_join: true
     on_success: change
