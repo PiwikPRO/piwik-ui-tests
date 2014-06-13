@@ -120,9 +120,9 @@ describe("Dashboard", function () {
             page.mouseMove('.widgetpreview-categorylist>li:contains(Live!)'); // have to mouse move twice... otherwise Live! will just be highlighted
             page.mouseMove('.widgetpreview-categorylist>li:contains(Visits Summary)');
 
-            page.mouseMove('.widgetpreview-widgetlist>li[uniqueid=widgetVisitTimegetVisitInformationPerLocalTime]');
+            page.mouseMove('.widgetpreview-widgetlist>li:contains(Visits by Local Time)');
 
-            page.click('.widgetpreview-widgetlist>li[uniqueid=widgetVisitTimegetVisitInformationPerLocalTime]');
+            page.click('.widgetpreview-widgetlist>li:contains(Visits by Local Time)');
         }, done);
     });
 
