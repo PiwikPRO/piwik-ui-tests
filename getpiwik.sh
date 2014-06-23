@@ -16,6 +16,8 @@ echo "Cloning branch $PIWIK_BRANCH..."
 cd ..
 git clone --depth=50 "--branch=$PIWIK_BRANCH" git://github.com/piwik/piwik.git piwik
 
+cd piwik
+
 if [ "$PIWIK_COMMIT" != "" ]; then
     echo "Checking out commit $PIWIK_COMMIT..."
     git checkout -qf "$PIWIK_COMMIT"
@@ -24,7 +26,7 @@ else
 fi
 
 echo "Updating submodules..."
-cd piwik
+
 git submodule update --init --recursive
 
 if [ ! -d tests/PHPUnit/UI/specs ]; then
