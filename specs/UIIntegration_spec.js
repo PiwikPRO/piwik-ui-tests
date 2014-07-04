@@ -28,6 +28,11 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         testEnvironment.callApi("SitesManager.setSiteAliasUrls", {idSite: 3, urls: []}, done);
     });
 
+    beforeEach(function () {
+        delete testEnvironment.configOverride;
+        testEnvironment.save();
+    });
+
     after(function () {
         delete testEnvironment.queryParamOverride;
         testEnvironment.save();
@@ -382,6 +387,24 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         expect.screenshot('fatal_error_safemode').to.be.capture(function (page) {
             page.load("?" + generalParams + "&module=CorePluginsAdmin&action=safemode&idSite=1&period=day&date=yesterday&activated"
                     + "&error_message=" + message + "&error_file=" + file + "&error_line=" + line + "&tests_hide_piwik_version=1");
+        }, done);
+    });
+
+    // DB error message
+    it('should fail correctly when db information in config is incorrect', function (done) {
+        testEnvironment.configOverride = {
+            database: {
+                host: '127.50.50.50',
+                username: 'slkdfjsdlkfj',
+                password: 'slkdfjsldkfj',
+                dbname: 'abcdefg',
+                tables_prefix: 'gfedcba'
+            }
+        };
+        testEnvironment.save();
+
+        expect.screenshot('db_connect_error').to.be.capture(function (page) {
+            page.load("");
         }, done);
     });
 
