@@ -278,14 +278,6 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
-    // transitions popup
-    it('should load the transitions popup correctly', function (done) {
-        expect.screenshot('transitions_popup').to.be.capture(function (page) {
-            page.load("?" + urlBase + "#" + generalParams + "#module=Actions&action=indexPageUrls&"
-                    + "popover=RowAction$3ATransitions$3Aurl$3Ahttp$3A$2F$2Fpiwik.net$2Fdocs$2Fmanage-websites$2F");
-        }, done);
-    });
-
     // Admin user settings (plugins not displayed)
     it('should load the Manage > Websites admin page correctly', function (done) {
         expect.screenshot('admin_manage_websites').to.be.capture(function (page) {
