@@ -328,7 +328,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     });
 
     it('should load the Settings > Privacy admin page correctly', function (done) {
-        expect.screenshot('admin_privacy_settings').to.be.captureSelector('#content', function (page) {
+        expect.screenshot('admin_privacy_settings').to.be.captureSelector('#content,.ui-inline-help', function (page) {
             page.load("?" + generalParams + "&module=PrivacyManager&action=privacySettings");
         }, done);
     });
