@@ -50,7 +50,7 @@ describe("Menus", function () {
 
     it('should change the admin page correctly when an admin menu item is clicked', function (done) {
         expect.screenshot('admin_changed').to.be.captureSelector('.Menu--admin', function (page) {
-            page.click('a:contains(Websites)');
+            page.click('.Menu--admin a:contains(Websites)');
         }, done);
     });
 });

@@ -272,13 +272,13 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
 
     // widgetize
     it('should load the widgetized visitor log correctly', function (done) {
-        expect.screenshot('widgetize_visitor_log').to.be.captureSelector('#content', function (page) {
+        expect.screenshot('widgetize_visitor_log').to.be.capture(function (page) {
             page.load("?" + widgetizeParams + "&" + generalParams + "&moduleToWidgetize=Live&actionToWidgetize=getVisitorLog");
         }, done);
     });
 
     it('should load the widgetized all websites dashboard correctly', function (done) {
-        expect.screenshot('widgetize_allwebsites').to.be.captureSelector('#content', function (page) {
+        expect.screenshot('widgetize_allwebsites').to.be.capture(function (page) {
             page.load("?" + widgetizeParams + "&" + generalParams + "&moduleToWidgetize=MultiSites&actionToWidgetize=standalone");
         }, done);
     });
