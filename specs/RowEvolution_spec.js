@@ -14,7 +14,7 @@ describe("RowEvolution", function () {
                          + "actionToWidgetize=getKeywords&viewDataTable=table&filter_limit=5";
 
     it('should load when icon clicked in ViewDataTable', function (done) {
-        expect.screenshot('row_evolution').to.be.capture(function (page) {
+        expect.screenshot('row_evolution').to.be.captureSelector('.ui-dialog', function (page) {
             page.load(viewDataTableUrl);
             page.mouseMove('tbody tr:first-child');
             page.mouseMove('a.actionRowEvolution:visible'); // necessary to get popover to display
@@ -23,19 +23,19 @@ describe("RowEvolution", function () {
     });
 
     it('should change the metric shown when a metric sparkline row is clicked', function (done) {
-        expect.screenshot('row_evolution_other_metric').to.be.capture(function (page) {
+        expect.screenshot('row_evolution_other_metric').to.be.captureSelector('.ui-dialog', function (page) {
             page.click('table.metrics tr[data-i=1]');
         }, done);
     });
 
     it('should show two serieses when a metric sparkline row is shift+clicked', function (done) {
-        expect.screenshot('row_evolution_multiple_series').to.be.capture(function (page) {
+        expect.screenshot('row_evolution_multiple_series').to.be.captureSelector('.ui-dialog', function (page) {
             page.click('table.metrics tr[data-i=2]', ['shift']);
         }, done);
     });
 
     it('should load multi-row evolution correctly', function (done) {
-        expect.screenshot('multirow_evolution').to.be.capture(function (page) {
+        expect.screenshot('multirow_evolution').to.be.captureSelector('.ui-dialog', function (page) {
             page.click('a.rowevolution-startmulti');
             page.mouseMove('tbody tr:nth-child(2)');
             page.mouseMove('a.actionRowEvolution:visible');
@@ -44,7 +44,7 @@ describe("RowEvolution", function () {
     });
 
     it('should display a different row evolution metric when the metric selection is changed', function (done) {
-        expect.screenshot('multirow_evolution_other_metric').to.be.capture(function (page) {
+        expect.screenshot('multirow_evolution_other_metric').to.be.captureSelector('.ui-dialog', function (page) {
             page.evaluate(function () {
                 $('select.multirowevoltion-metric').val($('select.multirowevoltion-metric option:nth-child(3)').val()).change();
             });

@@ -13,7 +13,7 @@ describe("DBStats", function () {
     var url = "?module=DBStats&action=index&idSite=1&period=day&date=yesterday";
 
     it("should load correctly", function (done) {
-        expect.screenshot('admin_page').to.be.capture(function (page) {
+        expect.screenshot('admin_page').to.be.captureSelector('#content', function (page) {
             page.load(url);
         }, done);
     });
