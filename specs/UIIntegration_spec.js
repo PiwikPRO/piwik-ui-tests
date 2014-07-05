@@ -288,7 +288,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         expect.screenshot('admin_manage_websites').to.be.captureSelector('#content', function (page) {
             page.load("?" + generalParams + "&module=SitesManager&action=index");
             page.evaluate(function () {
-                $('.ui-inline-help:content(UTC time is)').hide();
+                $('.ui-inline-help:contains(UTC time is)').hide();
             });
         }, done);
     });
