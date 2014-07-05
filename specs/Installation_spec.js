@@ -14,7 +14,7 @@ describe("Installation", function () {
     this.fixture = null;
 
     before(function () {
-        testEnvironment.configFileLocal = path.join(PIWIK_INCLUDE_PATH, "/config/config.ini.php");
+        testEnvironment.configFileLocal = path.join(PIWIK_INCLUDE_PATH, "/tmp/test.config.ini.php");
         testEnvironment.dontUseTestConfig = true;
         testEnvironment.tablesPrefix = 'piwik_';
         testEnvironment.save();
