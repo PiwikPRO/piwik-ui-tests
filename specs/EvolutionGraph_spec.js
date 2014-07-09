@@ -63,7 +63,7 @@ describe("EvolutionGraph", function () {
                 $('.limitSelection ul li[value=30]').click(); // change limit back
             });
 
-            page.click('.evolution-annotations>span[data-count!=0]');
+            page.click('.evolution-annotations>span[data-count!=0]', 3000);
         }, done);
     });
 
