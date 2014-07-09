@@ -1,2 +1,2 @@
-698cfb1ae58fe67d25ef647ecb452b153bc9ec2e
-tests_namespacing
+8acc417892f1439a64857958855f8d617122d0bd
+manipulator_refactor
