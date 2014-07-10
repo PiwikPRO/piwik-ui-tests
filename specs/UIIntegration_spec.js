@@ -21,7 +21,8 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     before(function (done) {
         testEnvironment.queryParamOverride = {
             forceNowValue: testEnvironment.forcedNowTimestamp,
-            visitorId: testEnvironment.forcedIdVisitor
+            visitorId: testEnvironment.forcedIdVisitor,
+            realtimeWindow: 'false'
         };
         testEnvironment.save();
 
@@ -463,8 +464,9 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     it('should load the feedback form when the feedback form link is clicked', function (done) {
         expect.screenshot('feedback_form').to.be.capture(function (page) {
             page.evaluate(function () {
-                $('a#usermenu-feedback-index').click(); // header is hidden in last screenshot
-
+                window.location.href = $('a#usermenu-feedback-index').attr('href'); // header is hidden in last screenshot
+            });
+            page.evaluate(function () {
                 $('h2 span').each(function () {
                     if ($(this).text().indexOf("Piwik") !== -1) {
                         var replace = $(this).text().replace(/Piwik\s*\d+\.\d+(\.\d+)?([\-a-z]*\d+)?/g, 'Piwik');
