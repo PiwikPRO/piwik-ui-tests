@@ -8,7 +8,13 @@
 
 namespace Piwik\Tests\Fixtures;
 
-class UpdaterTestFixture extends \Piwik_Test_Fixture_SqlDump
+if (class_exists("Piwik_Test_Fixture_SqlDump")) {
+    class SqlDump extends \Piwik_Test_Fixture_SqlDump
+    {
+    }
+}
+
+class UpdaterTestFixture extends SqlDump
 {
     public function performSetUp($setupEnvironmentOnly = false)
     {
