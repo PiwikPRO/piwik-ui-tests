@@ -121,7 +121,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
 
     it('should load the visitors > custom variables page correctly', function (done) {
         expect.screenshot('visitors_custom_vars').to.be.captureSelector('.pageWrap', function (page) {
-            page.load("?" + urlBase + "#" + generalParams + "&module=CustomVariables&action=index");
+            page.load("?" + urlBase + "#" + generalParams + "&module=CustomVariables&action=menuGetCustomVariables");
         }, done);
     });
 
@@ -136,25 +136,25 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     // actions pages
     it('should load the actions > pages page correctly', function (done) {
         expect.screenshot('actions_pages').to.be.captureSelector('.pageWrap', function (page) {
-            page.load("?" + urlBase + "#" + generalParams + "&module=Actions&action=indexPageUrls");
+            page.load("?" + urlBase + "#" + generalParams + "&module=Actions&action=menuGetPageUrls");
         }, done);
     });
 
     it('should load the actions > entry pages page correctly', function (done) {
         expect.screenshot('actions_entry_pages').to.be.captureSelector('.pageWrap', function (page) {
-            page.load("?" + urlBase + "#" + generalParams + "&module=Actions&action=indexEntryPageUrls");
+            page.load("?" + urlBase + "#" + generalParams + "&module=Actions&action=menuGetEntryPageUrls");
         }, done);
     });
 
     it('should load the actions > exit pages page correctly', function (done) {
         expect.screenshot('actions_exit_pages').to.be.captureSelector('.pageWrap', function (page) {
-            page.load("?" + urlBase + "#" + generalParams + "&module=Actions&action=indexExitPageUrls");
+            page.load("?" + urlBase + "#" + generalParams + "&module=Actions&action=menuGetExitPageUrls");
         }, done);
     });
 
     it('should load the actions > page titles page correctly', function (done) {
         expect.screenshot('actions_page_titles').to.be.captureSelector('.pageWrap', function (page) {
-            page.load("?" + urlBase + "#" + generalParams + "&module=Actions&action=indexPageTitles");
+            page.load("?" + urlBase + "#" + generalParams + "&module=Actions&action=menuGetPageTitles");
         }, done);
     });
 
@@ -166,13 +166,13 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
 
     it('should load the actions > outlinks page correctly', function (done) {
         expect.screenshot('actions_outlinks').to.be.captureSelector('.pageWrap', function (page) {
-            page.load("?" + urlBase + "#" + generalParams + "&module=Actions&action=indexOutlinks");
+            page.load("?" + urlBase + "#" + generalParams + "&module=Actions&action=menuGetOutlinks");
         }, done);
     });
 
     it('should load the actions > downloads page correctly', function (done) {
         expect.screenshot('actions_downloads').to.be.captureSelector('.pageWrap', function (page) {
-            page.load("?" + urlBase + "#" + generalParams + "&module=Actions&action=indexDownloads");
+            page.load("?" + urlBase + "#" + generalParams + "&module=Actions&action=menuGetDownloads");
         }, done);
     });
 
@@ -197,7 +197,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
 
     it('should load the referrers > campaigns page correctly', function (done) {
         expect.screenshot('referrers_campaigns').to.be.captureSelector('.pageWrap', function (page) {
-            page.load("?" + urlBase + "#" + generalParams + "&module=Referrers&action=indexCampaigns");
+            page.load("?" + urlBase + "#" + generalParams + "&module=Referrers&action=menuGetCampaigns");
         }, done);
     });
 
