@@ -1,2 +1,2 @@
-47df493b86c73b8b678e7d62bbe4080c6e0d3ef6
-tests_refactor
+e0451b6a03113cbcf7a9b4de801b52273daeed85
+manipulator_refactor
