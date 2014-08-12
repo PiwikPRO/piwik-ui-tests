@@ -17,7 +17,7 @@ describe("Menus", function () {
     // main menu tests
     it('should load the main reporting menu correctly', function (done) {
         expect.screenshot('mainmenu_loaded').to.be.captureSelector('.Menu--dashboard,.nav_sep', function (page) {
-            page.load("?" + urlBase + "#" + generalParams + "&module=Actions&action=indexPageUrls");
+            page.load("?" + urlBase + "#" + generalParams + "&module=Actions&action=menuGetPageUrls");
         }, done);
     });
 
