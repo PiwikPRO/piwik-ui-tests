@@ -1,2 +1,2 @@
 d836135ed01cb638ca7d3d2d5c877c9882f41c90
-master
+2.5.0-rc2
