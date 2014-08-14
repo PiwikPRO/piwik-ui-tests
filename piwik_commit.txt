@@ -1,2 +1,2 @@
 053173ed93ebe7a27390f4a6a45504ae83d4bffd
-master
+2.5.0-rc3
