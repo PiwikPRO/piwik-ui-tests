@@ -1,2 +1,2 @@
 fe239518110ab6815ab1e7591ab6ad8f5f5750f5
-master
+2.5.0-rc4
