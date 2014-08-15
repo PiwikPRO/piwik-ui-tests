@@ -1,2 +1,2 @@
 c9fcd01f768cffd0a2b3cfebfd9dc4f3f24b433f
-master
+2.5.0
