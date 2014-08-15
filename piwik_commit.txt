@@ -1,2 +1,2 @@
-9a34fec68af94a01cfc0e631444a19a4ccafe722
-5414_useFindComponentsToGetSettings
+28b856c73d7d541285c2e8c8b07096b0b6c22bc5
+findComponentsOnlyOfActivatedPlugins
