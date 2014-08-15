@@ -1,2 +1,2 @@
-8c4d197e8d0ae6b0d298ee5fe30dba54c7f920d3
-findComponentsOnlyOfActivatedPlugins
+6039ddf97e7c17a333d1085911070790188df74a
+5414_useFindComponentsToGetSettings
