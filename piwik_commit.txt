@@ -1,2 +1,2 @@
-81db4fea9897bdcc744621eb81c50e17408d43f9
-reenable_travis_tests
+75b284c8f6fdbe7f69782c693a8849892e434da3
+composer_autoloader
