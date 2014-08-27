@@ -1,2 +1,2 @@
 baf92dd481c9f19400db1b9dafb4a3220d331c19
-master
+2.6.0-b1
