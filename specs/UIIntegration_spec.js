@@ -334,6 +334,12 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
+    it('should load the Privacy Opt out iframe correctly', function (done) {
+        expect.screenshot('admin_privacy_optout_iframe').to.be.capture(function (page) {
+            page.load("?module=CoreAdminHome&action=optOut&language=de");
+        }, done);
+    });
+
     it('should load the Settings > Mobile Messaging admin page correctly', function (done) {
         expect.screenshot('admin_settings_mobilemessaging').to.be.captureSelector('#content', function (page) {
             page.load("?" + generalParams + "&module=MobileMessaging&action=index");
