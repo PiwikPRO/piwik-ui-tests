@@ -1,2 +1,2 @@
-0a7cb9196fbfe9cb36eff46b44e05599c0fed86d
-2.6.0-rc1
+204278509b24be69ccc87c4a62bbc39a75afd2ab
+master
