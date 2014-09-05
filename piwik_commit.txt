@@ -1,2 +1,2 @@
 079384c2f4e0fa3c722c2ca0912dab1818dd04c0
-master
+2.6.0-rc2
