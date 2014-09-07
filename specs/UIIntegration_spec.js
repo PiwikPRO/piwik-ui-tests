@@ -520,7 +520,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     });
 
     // opt out page
-    it.only('should load the opt out page correctly', function (done) {
+    it('should load the opt out page correctly', function (done) {
         expect.screenshot('opt_out').to.be.capture(function (page) {
             testEnvironment.testUseRegularAuth = 1;
             testEnvironment.save();
