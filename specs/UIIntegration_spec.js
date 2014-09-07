@@ -31,11 +31,13 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
 
     beforeEach(function () {
         delete testEnvironment.configOverride;
+        testEnvironment.testUseRegularAuth = 0;
         testEnvironment.save();
     });
 
     after(function () {
         delete testEnvironment.queryParamOverride;
+        testEnvironment.testUseRegularAuth = 0;
         testEnvironment.save();
     });
 
@@ -514,6 +516,16 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
             });
 
             page.wait(1000);
+        }, done);
+    });
+
+    // opt out page
+    it.only('should load the opt out page correctly', function (done) {
+        expect.screenshot('opt_out').to.be.capture(function (page) {
+            testEnvironment.testUseRegularAuth = 1;
+            testEnvironment.save();
+
+            page.load("?module=CoreAdminHome&action=optOut&language=en");
         }, done);
     });
 });
