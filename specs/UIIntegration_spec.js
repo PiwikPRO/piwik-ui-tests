@@ -277,6 +277,9 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     it('should load the widgetized visitor log correctly', function (done) {
         expect.screenshot('widgetize_visitor_log').to.be.capture(function (page) {
             page.load("?" + widgetizeParams + "&" + generalParams + "&moduleToWidgetize=Live&actionToWidgetize=getVisitorLog");
+            page.evaluate(function () {
+                $('.expandDataTableFooterDrawer').click();
+            });
         }, done);
     });
 

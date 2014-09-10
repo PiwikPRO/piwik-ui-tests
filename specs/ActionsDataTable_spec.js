@@ -15,6 +15,9 @@ describe("ActionsDataTable", function () {
     it("should load correctly", function (done) {
         expect.screenshot('initial').to.be.capture(function (page) {
             page.load(url);
+            page.evaluate(function () {
+                $('.expandDataTableFooterDrawer').click();
+            });
         }, done);
     });
 

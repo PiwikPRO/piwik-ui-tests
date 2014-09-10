@@ -17,6 +17,9 @@ describe("ViewDataTableTest", function () { // TODO: should remove Test suffix f
     it("should load correctly", function (done) {
         expect.screenshot("0_initial").to.be.capture(function (page) {
             page.load(url);
+            page.evaluate(function () {
+                $('.expandDataTableFooterDrawer').click();
+            });
         }, done);
     });
 

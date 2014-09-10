@@ -16,6 +16,9 @@ describe("BarGraph", function () {
     it("should load correctly", function (done) {
         expect.screenshot("load").to.be.capture(function (page) {
             page.load(url);
+            page.evaluate(function () {
+                $('.expandDataTableFooterDrawer').click();
+            });
         }, done);
     });
 
