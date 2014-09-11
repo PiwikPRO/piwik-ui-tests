@@ -11,7 +11,7 @@ describe("GoalsTable", function () {
     this.timeout(0);
 
     var url = "?module=Widgetize&action=iframe&moduleToWidgetize=Referrers&idSite=1&period=year&date=2012-08-09&"
-            + "actionToWidgetize=getKeywords&viewDataTable=table&filter_limit=5";
+            + "actionToWidgetize=getKeywords&viewDataTable=table&filter_limit=5&isFooterExpandedInDashboard=1";
 
     it("should load when the goals icon is clicked", function (done) {
         expect.screenshot('initial').to.be.capture(function (page) {

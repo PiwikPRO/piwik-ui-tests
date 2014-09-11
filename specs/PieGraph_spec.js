@@ -11,14 +11,11 @@ describe("PieGraph", function () {
     this.timeout(0);
 
     var url = "?module=Widgetize&action=iframe&moduleToWidgetize=Referrers&idSite=1&period=year&date=2012-08-09&"
-            + "actionToWidgetize=getKeywords&viewDataTable=graphPie";
+            + "actionToWidgetize=getKeywords&viewDataTable=graphPie&isFooterExpandedInDashboard=1";
 
     it("should load correctly", function (done) {
         expect.screenshot("load").to.be.capture(function (page) {
             page.load(url);
-            page.evaluate(function () {
-                $('.expandDataTableFooterDrawer').click();
-            });
         }, done);
     });
 

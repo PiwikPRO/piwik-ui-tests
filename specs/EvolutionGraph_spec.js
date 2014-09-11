@@ -11,7 +11,8 @@ describe("EvolutionGraph", function () {
     this.timeout(0);
 
     var url = "?module=Widgetize&action=iframe&idSite=1&period=day&date=2012-01-31&evolution_day_last_n=30"
-            + "&moduleToWidgetize=UserCountry&actionToWidgetize=getCountry&viewDataTable=graphEvolution";
+            + "&moduleToWidgetize=UserCountry&actionToWidgetize=getCountry&viewDataTable=graphEvolution"
+            + "&isFooterExpandedInDashboard=1";
 
     before(function (done) {
         testEnvironment.callApi("Annotations.deleteAll", {idSite: 3}, done);
@@ -20,9 +21,6 @@ describe("EvolutionGraph", function () {
     it("should load correctly", function (done) {
         expect.screenshot('initial').to.be.capture(function (page) {
             page.load(url);
-            page.evaluate(function () {
-                $('.expandDataTableFooterDrawer').click();
-            });
         }, done);
     });
 

@@ -10,14 +10,11 @@
 describe("ActionsDataTable", function () {
     this.timeout(0);
 
-    var url = "?module=Widgetize&action=iframe&idSite=1&period=year&date=2012-08-09&moduleToWidgetize=Actions&actionToWidgetize=getPageUrls";
+    var url = "?module=Widgetize&action=iframe&idSite=1&period=year&date=2012-08-09&moduleToWidgetize=Actions&actionToWidgetize=getPageUrls&isFooterExpandedInDashboard=1";
 
     it("should load correctly", function (done) {
         expect.screenshot('initial').to.be.capture(function (page) {
             page.load(url);
-            page.evaluate(function () {
-                $('.expandDataTableFooterDrawer').click();
-            });
         }, done);
     });
 
