@@ -178,6 +178,12 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
+    it('should load the actions > contents page correctly', function (done) {
+        expect.screenshot('actions_contents').to.be.captureSelector('.pageWrap,.expandDataTableFooterDrawer', function (page) {
+            page.load("?" + urlBase + "#" + generalParams + "&module=Contents&action=index");
+        }, done);
+    });
+
     // referrers pages
     it('should load the referrers > overview page correctly', function (done) {
         expect.screenshot('referrers_overview').to.be.captureSelector('.pageWrap,.expandDataTableFooterDrawer', function (page) {
