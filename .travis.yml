@@ -2,8 +2,9 @@ language: php
 
 # We want to test against PHP 5.3/5.4/5.5
 php:
-  - 5.6
-  #- 5.5
+  # UI tests fail on 5.6 eg. https://travis-ci.org/piwik/piwik-ui-tests/builds/35236552
+  #- 5.6
+  - 5.5
   #- 5.4
   #- 5.3
 
