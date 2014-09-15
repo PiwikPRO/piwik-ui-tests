@@ -1,2 +1,2 @@
-e371d7c6a01464d476d5eb0c027fbeae83edcc20
-master
+718c1bb9c6bb94b8342c82fe99486ad88dffd041
+component_factory
