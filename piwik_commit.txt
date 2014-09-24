@@ -1,2 +1,2 @@
 ecb25b4100cb1ebbc3009061a96cc35c66100e47
-master
+2.7.0
