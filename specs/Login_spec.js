@@ -10,6 +10,9 @@
 describe("Login", function () {
     this.timeout(0);
 
+    var md5Pass = "91e5fbb8a11d672be9b9f97bd04eee59", // md5("superUserPass2")
+        formlessLoginUrl = "?module=Login&action=logme&login=superUserLogin&password=" + md5Pass;
+
     before(function () {
         testEnvironment.testUseRegularAuth = 1;
         testEnvironment.queryParamOverride = {date: "2012-01-01", period: "year"};
@@ -81,6 +84,13 @@ describe("Login", function () {
             page.sendKeys("#login_form_login", "superUserLogin");
             page.sendKeys("#login_form_password", "superUserPass2");
             page.click("#login_form_submit");
+        }, done);
+    });
+
+    it("should login successfully when formless login used", function (done) {
+        expect.page("").contains('#dashboard', function (page) {
+            page.click("#topBars a:contains(Sign out)");
+            page.load(formlessLoginUrl);
         }, done);
     });
 });
