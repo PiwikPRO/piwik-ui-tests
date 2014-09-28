@@ -1,2 +1,2 @@
-d524f2de9021e29ed64e0e4ccdab1b0c7f26e1cd
+c2a56ef704c99b6cdd01efd8c23b8f0247a812fa
 deprecate_usersettings
