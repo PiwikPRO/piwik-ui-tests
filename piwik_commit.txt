@@ -1,2 +1,2 @@
-8697134a64a1e118be18a8ed9cd8acc6cf012647
-set_superuser_access_refactor
+e91a43d72d2a6cdbf2eb13db0a6fd3b9bdf16149
+reenable_travis_tests
