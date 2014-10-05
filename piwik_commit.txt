@@ -1,2 +1,2 @@
 19bcd2d262343eae9d553378e4c66ce7e033b4d8
-5940_testRenaming
+5940_testRenamingAndCorrectFolders
