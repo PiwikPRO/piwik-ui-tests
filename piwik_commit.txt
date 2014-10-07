@@ -1,2 +1,2 @@
-9df4f668e23b962e3632a383facfa5b44bd74a1e
-master
+8ecaac996b1d6bb4b8b7b882ac32a85e093162a9
+feature/collapse-token
