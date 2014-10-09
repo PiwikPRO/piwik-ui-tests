@@ -1,2 +1,2 @@
-7c2325fed09d51cad6f15c65562b76bf64602eac
-deprecate_usersettings
+5b79f746876e24e1171c5cbfc25c5cfb21e87e36
+5940_testRenamingAndCorrectFolders
