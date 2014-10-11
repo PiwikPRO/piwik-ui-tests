@@ -1,2 +1,2 @@
-4f216bc6d0299f1fba60cff6d2b507faa1166399
-2.8.0-b3
+dbfec7bd23738612325577ce1fdf62b3009bcb7a
+deprecate_usersettings
