@@ -18,6 +18,7 @@ env:
 script: ./travis.sh
 
 before_script:
+  - phpenv config-rm xdebug.ini
   - sudo apt-get install -y imagemagick
   - ./getpiwik.sh
   - cd ../piwik
