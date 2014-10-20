@@ -1,2 +1,2 @@
-e37ce827f313e07be7df1b5f53ba00bdbd955964
-6068_ecommerce_decode_bug
+6ba3965c2878d123514d951c60e77c1d697438ad
+deprecate_usersettings
