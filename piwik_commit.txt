@@ -1,2 +1,2 @@
-9946f0eff353f9c5bf4712fffc3c982ca34bfba7
-introducingBower
+96fa7533f38e3bccacd6f86b4846bc62507bbee7
+bugfix/6156
