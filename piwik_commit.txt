@@ -1,2 +1,2 @@
-67eb986eaabc78056583ff98d056864206846250
-master
+87ded3b616c3016945d6f4fdadd44cce56300b77
+bugfix_travis_mysqli
