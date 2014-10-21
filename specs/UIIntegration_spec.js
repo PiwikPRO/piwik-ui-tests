@@ -185,19 +185,19 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     });
 
     it("should show all corresponding content pieces when clicking on a content name", function (done) {
-        expect.screenshot("loaded").to.be.captureSelector("actions_content_name_piece", '.pageWrap', function (page) {
+        expect.screenshot("actions_content_name_piece").to.be.captureSelector('.pageWrap', function (page) {
             page.click('.dataTable .subDataTable .value:contains(ImageAd)');
         }, done);
     });
 
     it("should show all tracked content pieces when clicking on the table", function (done) {
-        expect.screenshot("loaded").to.be.captureSelector("actions_content_piece", '.pageWrap', function (page) {
+        expect.screenshot("actions_content_piece").to.be.captureSelector('.pageWrap', function (page) {
             page.click('.reportDimension .dimension:contains(Content Piece)');
         }, done);
     });
 
     it("should show all corresponding content names when clicking on a content piece", function (done) {
-        expect.screenshot("loaded").to.be.captureSelector("actions_content_piece_name", '.pageWrap', function (page) {
+        expect.screenshot("actions_content_piece_name").to.be.captureSelector('.pageWrap', function (page) {
             page.click('.dataTable .subDataTable .value:contains(Click NOW)');
         }, done);
     });
