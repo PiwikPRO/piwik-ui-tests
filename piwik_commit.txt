@@ -1,2 +1,2 @@
-87ded3b616c3016945d6f4fdadd44cce56300b77
-bugfix_travis_mysqli
+4f72ea1a42d1c56554d8b7885efd251fa68d29ac
+master
