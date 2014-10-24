@@ -1,2 +1,2 @@
-d6c088ed46c786c39f0046d40ccb8bd2d5463737
-tests-autoloading
+d2580f8e4207d7df34cb6134a5685d98cac93130
+testsOnAws
