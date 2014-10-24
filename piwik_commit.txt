@@ -1,2 +1,2 @@
-3eb6c06a2fd63bc6b84d4a34ef6147eff99ef5f6
-master
+1c54692be1358cd9bc896965b4d2d190f4c1efe2
+tests-autoloading
