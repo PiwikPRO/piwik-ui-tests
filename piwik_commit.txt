@@ -1,2 +1,2 @@
-e9a5e4e10ecef2cb572d1704edca06e216f825dd
-master
+13c771ee55252bb8a825f7d8474de7f704ec5fc5
+6519_allowExecutionOfDeprecatedMethods
