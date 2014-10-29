@@ -1,2 +1,2 @@
-46b84557d30dcab91e5e4dfe07befafdea2cb33b
-php-di
+a4342fa73a874db41cabdf4684204b610c923bdd
+deprecate_usersettings
