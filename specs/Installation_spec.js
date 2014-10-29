@@ -63,7 +63,16 @@ describe("Installation", function () {
 
     it("should display the tables created page when next is clicked on the db setup page w/ correct info entered in the form", function (done) {
         expect.screenshot("db_created").to.be.capture(function (page) {
-            page.sendKeys('input[name=username]', 'root');
+            var dbInfo = testEnvironment.readDbInfoFromConfig();
+            var username = dbInfo.username;
+            var password = dbInfo.password;
+
+            page.sendKeys('input[name=username]', username);
+
+            if (password) {
+                page.sendKeys('input[name=password]', password);
+            }
+
             page.sendKeys('input[name=dbname]', 'newdb');
             page.click('.submit');
         }, done);
