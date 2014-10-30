@@ -1,2 +1,2 @@
 e8af0571e5661fddd484ef9d3ff3e2a69e1986cf
-master
+testfix/mysql-gone-away
