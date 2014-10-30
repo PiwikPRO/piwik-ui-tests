@@ -1,2 +1,2 @@
-d166ff12ce2cd6010c31f2df8c6ee936a55af346
+adc0307681791ba24a3f747fbdb9209920767441
 testfix/mysql-gone-away
