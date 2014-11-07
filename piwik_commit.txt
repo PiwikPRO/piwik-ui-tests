@@ -1,2 +1,2 @@
-4ab8054b8bdd3f8a1f831b0d1a25ec8c6c754563
-2.9.0-b7
+0a7d9b21faed9b8bfe7b3b7e40f8fef9a2dd4484
+deprecate_usersettings
