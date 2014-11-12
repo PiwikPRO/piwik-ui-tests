@@ -1,2 +1,2 @@
-c0aeac4509c181c930f70a2685706469b4ce3e5c
-revert-6574-3581_IPv6_support
+9feabe0044720568c7d4e9c124c1fee50faca3e6
+provider_sumRowArray
