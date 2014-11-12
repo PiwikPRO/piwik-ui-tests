@@ -1,2 +1,2 @@
-7406ef9fccfbf59a5b04196657f7874d278719dd
-provider_sumRowArray
+368be0a983ac669220baee2126f91e569a6add00
+master
