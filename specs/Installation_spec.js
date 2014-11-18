@@ -14,6 +14,7 @@ describe("Installation", function () {
     this.fixture = null;
 
     before(function () {
+        testEnvironment.testUseRegularAuth = 1;
         testEnvironment.configFileLocal = path.join(PIWIK_INCLUDE_PATH, "/tmp/test.config.ini.php");
         testEnvironment.dontUseTestConfig = true;
         testEnvironment.tablesPrefix = 'piwik_';
@@ -28,6 +29,7 @@ describe("Installation", function () {
         delete testEnvironment.configFileLocal;
         delete testEnvironment.dontUseTestConfig;
         delete testEnvironment.tablesPrefix;
+        delete testEnvironment.testUseRegularAuth;
         testEnvironment.save();
     });
 
@@ -126,4 +128,9 @@ describe("Installation", function () {
         }, done);
     });
 
+    it("should continue to piwik after submitting on the privacy settings form in the congrats page", function (done) {
+        expect.current_page.contains('#login_form', function (page) {
+            page.click('.submit');
+        }, done);
+    });
 });
