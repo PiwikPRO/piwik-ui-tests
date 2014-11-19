@@ -129,7 +129,7 @@ describe("Installation", function () {
     });
 
     it("should continue to piwik after submitting on the privacy settings form in the congrats page", function (done) {
-        expect.current_page.contains('#login_form', function (page) {
+        expect.screenshot('Login', 'login_form').contains('#login_form', function (page) {
             page.click('.submit');
         }, done);
     });
