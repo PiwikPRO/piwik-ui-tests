@@ -313,6 +313,12 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
+    it('should widgetize the ecommerce log correctly', function (done) {
+        expect.screenshot('widgetize_ecommercelog').to.be.capture(function (page) {
+            page.load("?" + widgetizeParams + "&" + generalParams + "&moduleToWidgetize=Goals&actionToWidgetize=getEcommerceLog&filter_limit=-1");
+        }, done);
+    });
+
     // Admin user settings (plugins not displayed)
     it('should load the Manage > Websites admin page correctly', function (done) {
         expect.screenshot('admin_manage_websites').to.be.captureSelector('#content', function (page) {
