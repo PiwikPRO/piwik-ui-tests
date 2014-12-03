@@ -13,6 +13,9 @@ describe("RowEvolution", function () {
     var viewDataTableUrl = "?module=Widgetize&action=iframe&moduleToWidgetize=Referrers&idSite=1&period=week&date=2012-02-09&"
                          + "actionToWidgetize=getKeywords&viewDataTable=table&filter_limit=5";
 
+    var ecommerceItemReportWidgetized = "?module=Widgetize&action=iframe&moduleToWidgetize=Goals&actionToWidgetize=getItemsSku&idGoal=ecommerceAbandonedCart"
+                                      + "&idSite=1&period=year&date=2012-02-09&viewDataTable=ecommerceAbandonedCart&filter_limit=-1";
+
     it('should load when icon clicked in ViewDataTable', function (done) {
         expect.screenshot('row_evolution').to.be.captureSelector('.ui-dialog', function (page) {
             page.load(viewDataTableUrl);
@@ -48,6 +51,15 @@ describe("RowEvolution", function () {
             page.evaluate(function () {
                 $('select.multirowevoltion-metric').val($('select.multirowevoltion-metric option:nth-child(3)').val()).change();
             });
+        }, done);
+    });
+
+    it('should display row evolution for an ecommerce item report correctly', function (done) {
+        expect.screenshot('row_evolution_ecommerce_item').to.be.captureSelector('.ui-dialog', function (page) {
+            page.load(ecommerceItemReportWidgetized);
+            page.mouseMove('tbody tr:first-child');
+            page.mouseMove('a.actionRowEvolution:visible'); // necessary to get popover to display
+            page.click('a.actionRowEvolution:visible');
         }, done);
     });
 });
