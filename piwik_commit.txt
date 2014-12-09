@@ -1,2 +1,2 @@
-aad92e94052b7fe0cc617ec52e09c8a295c9ed4b
-log-refactoring-1
+cfc329b0d3dc2ef3a78cdf9c66655e57341fd3d2
+5178_strict_trans_tables
