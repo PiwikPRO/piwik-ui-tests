@@ -1,2 +1,2 @@
-0aee712096eb1e2fd7f5f50c2ccd531a24934547
-log-refactoring-1
+facc6af163c83616afd675d6fefa291678a38637
+log-refactoring-2
