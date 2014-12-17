@@ -1,2 +1,2 @@
-a26ae2fa8d136d0b3bcc5e6d1fa5cedf59c16ecf
-master
+5b7cfddf17ee6de6a92affb0336abd86c454b283
+screenshots_clip_change
