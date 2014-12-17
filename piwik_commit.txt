@@ -1,2 +1,2 @@
-6590128885af88b5bbfe9c0a856a224006f8e7e3
-log-refactoring-1
+a26ae2fa8d136d0b3bcc5e6d1fa5cedf59c16ecf
+master
