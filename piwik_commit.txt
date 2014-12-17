@@ -1,2 +1,2 @@
-f031f68b3093ebc9a2a51d14ae9e0c323e6510e2
-screenshots_clip_change
+b2a064d79bb87a71a72efd8e757d0cb1254cb50e
+master
