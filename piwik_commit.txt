@@ -1,2 +1,2 @@
-c870c34c242deeebc46b12a0e018a9b582dcf927
+bd05cf2a8b07eaaee1847a59f54442c2fd527b03
 move_plugins_reports
