@@ -1,2 +1,2 @@
-f88c0bebb90904f750b33d2a207d2e8ec45ffafc
-master
+d06fdd26d5162e637c39f7791d31b8ad56bc5e4e
+6930_test_against_required_min
