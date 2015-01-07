@@ -393,12 +393,6 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
-    it('should load the security info admin page correctly', function (done) {
-        expect.screenshot('admin_security_info').to.be.captureSelector('#content', function (page) {
-            page.load("?" + generalParams + "&module=SecurityInfo&tests_hide_piwik_version=1");
-        }, done);
-    });
-
     it('should load the plugin settings admin page correctly', function (done) {
         expect.screenshot('admin_plugin_settings').to.be.captureSelector('#content', function (page) {
             page.load("?" + generalParams + "&module=CoreAdminHome&action=pluginSettings");
