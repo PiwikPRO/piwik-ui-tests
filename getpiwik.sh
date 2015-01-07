@@ -14,7 +14,7 @@ fi
 echo "Cloning branch $PIWIK_BRANCH..."
 
 cd ..
-git clone --depth=50 "--branch=$PIWIK_BRANCH" git://github.com/piwik/piwik.git piwik
+git clone -q --depth=50 "--branch=$PIWIK_BRANCH" git://github.com/piwik/piwik.git piwik
 
 cd piwik
 
