@@ -49,6 +49,7 @@ describe("Login", function () {
 
     it("should redirect to login when logout link clicked", function (done) {
         expect.screenshot("login_form").to.be.capture("logout_form", function (page) {
+            page.click("#topBars span:contains(superUserLogin)");
             page.click("#topBars a:contains(Sign out)");
         }, done);
     });
