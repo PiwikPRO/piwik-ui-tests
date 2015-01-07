@@ -209,6 +209,13 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
+    // referrers pages
+    it('should load the referrers > overview page correctly', function (done) {
+        expect.screenshot('referrers_allreferrers').to.be.captureSelector('.pageWrap,.expandDataTableFooterDrawer', function (page) {
+            page.load("?" + urlBase + "#" + generalParams + "&module=Referrers&action=allReferrers");
+        }, done);
+    });
+
     it('should load the referrers > search engines & keywords page correctly', function (done) {
         expect.screenshot('referrers_search_engines_keywords').to.be.captureSelector('.pageWrap,.expandDataTableFooterDrawer', function (page) {
             page.load("?" + urlBase + "#" + generalParams + "&module=Referrers&action=getSearchEnginesAndKeywords");
@@ -230,13 +237,19 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     // goals pages
     it('should load the goals > ecommerce page correctly', function (done) {
         expect.screenshot('goals_ecommerce').to.be.captureSelector('.pageWrap,.expandDataTableFooterDrawer', function (page) {
-            page.load("?" + urlBase + "#" + generalParams + "&module=Goals&action=ecommerceReport&idGoal=ecommerceOrder");
+            page.load("?" + urlBase + "#" + generalParams + "&module=Ecommerce&action=ecommerceReport&idGoal=ecommerceOrder");
         }, done);
     });
 
     it('should load the goals > overview page correctly', function (done) {
         expect.screenshot('goals_overview').to.be.captureSelector('.pageWrap,.expandDataTableFooterDrawer', function (page) {
             page.load( "?" + urlBase + "#" + generalParams + "&module=Goals&action=index");
+        }, done);
+    });
+
+    it('should load the goals > management page correctly', function (done) {
+        expect.screenshot('goals_manage').to.be.captureSelector('.pageWrap,.expandDataTableFooterDrawer', function (page) {
+            page.load( "?" + urlBase + "#" + generalParams + "&module=Goals&action=manage");
         }, done);
     });
 
@@ -315,7 +328,25 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
 
     it('should widgetize the ecommerce log correctly', function (done) {
         expect.screenshot('widgetize_ecommercelog').to.be.capture(function (page) {
-            page.load("?" + widgetizeParams + "&" + generalParams + "&moduleToWidgetize=Goals&actionToWidgetize=getEcommerceLog&filter_limit=-1");
+            page.load("?" + widgetizeParams + "&" + generalParams + "&moduleToWidgetize=Ecommerce&actionToWidgetize=getEcommerceLog&filter_limit=-1");
+        }, done);
+    });
+
+    it('should load the ecommerce log page', function (done) {
+        expect.screenshot('ecommerce_log').to.be.captureSelector('.pageWrap,.expandDataTableFooterDrawer', function (page) {
+            page.load("?" + urlBase + "#" + generalParams + "&module=Ecommerce&action=ecommerceLogReport");
+        }, done);
+    });
+
+    it('should load the ecommerce products page', function (done) {
+        expect.screenshot('ecommerce_products').to.be.captureSelector('.pageWrap,.expandDataTableFooterDrawer', function (page) {
+            page.load("?" + urlBase + "#" + generalParams + "&module=Ecommerce&action=products");
+        }, done);
+    });
+
+    it('should load the ecommerce sales page', function (done) {
+        expect.screenshot('ecommerce_sales').to.be.captureSelector('.pageWrap,.expandDataTableFooterDrawer', function (page) {
+            page.load("?" + urlBase + "#" + generalParams + "&module=Ecommerce&action=sales");
         }, done);
     });
 
