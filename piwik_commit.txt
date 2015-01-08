@@ -1,2 +1,2 @@
-344f3ecb8ba28f08cdc9b4801b41fcf58d327234
-ini-component
+cc0bd5a2fa8cc32086ca0f6d9055973746f8e120
+intl-data
