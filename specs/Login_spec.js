@@ -10,8 +10,8 @@
 describe("Login", function () {
     this.timeout(0);
 
-    var md5Pass = "91e5fbb8a11d672be9b9f97bd04eee59", // md5("superUserPass2")
-        formlessLoginUrl = "?module=Login&action=logme&login=superUserLogin&password=" + md5Pass;
+    var md5Pass = "0adcc0d741277f74c64c8abab7330d1c", // md5("smarty-pants")
+        formlessLoginUrl = "?module=Login&action=logme&login=oliverqueen&password=" + md5Pass;
 
     before(function () {
         testEnvironment.testUseRegularAuth = 1;
@@ -90,7 +90,7 @@ describe("Login", function () {
     });
 
     it("should login successfully when formless login used", function (done) {
-        expect.page("").contains('#dashboard', function (page) {
+        expect.page("").contains('#dashboard', 'formless_login', function (page) {
             page.click("#topBars a:contains(Sign out)");
             page.load(formlessLoginUrl);
         }, done);
