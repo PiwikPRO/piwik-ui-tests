@@ -24,6 +24,12 @@ describe("EvolutionGraph", function () {
         }, done);
     });
 
+    it("should show percent metrics like bounce rate correctly", function (done) {
+        expect.screenshot('bounce_rate').to.be.capture(function (page) {
+            page.load(url + "&columns=nb_visits,bounce_rate&filter_add_columns_when_show_all_columns=0");
+        }, done);
+    });
+
     it("should show only one series when a label is specified", function (done) {
         expect.screenshot('one_series').to.be.capture(function (page) {
             page.load(url + "&label=Canada");
