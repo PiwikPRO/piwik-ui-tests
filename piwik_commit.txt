@@ -1,2 +1,2 @@
-eafb5bc5b947b439bd53e9eee02d4b26c98d2f66
-user_menu
+24ebd02f0424f464362227ec1cc6cdcca600dcfd
+bug/6927
