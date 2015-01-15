@@ -33,14 +33,6 @@ describe("Menus", function () {
         }, done);
     });
 
-    // top menu tests
-    it('should load show the user menu when userLogin link is clicked', function (done) {
-        expect.screenshot('usermenu_opened').to.be.captureSelector('.menuDropdown>.items', function (page) {
-            page.click('#userMenu .title');
-            page.wait(400);
-        }, done);
-    });
-
     // admin menu tests
     it('should load the admin reporting menu correctly', function (done) {
         expect.screenshot('admin_loaded').to.be.captureSelector('.Menu--admin', function (page) {
