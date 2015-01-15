@@ -439,7 +439,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
 
     it('should load the plugin settings admin page correctly', function (done) {
         expect.screenshot('admin_plugin_settings').to.be.captureSelector('#content', function (page) {
-            page.load("?" + generalParams + "&module=CoreAdminHome&action=pluginSettings");
+            page.load("?" + generalParams + "&module=CoreAdminHome&action=adminPluginSettings");
         }, done);
     });
 
@@ -529,7 +529,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     });
 
     it('should load the API listing page correctly', function (done) {
-        expect.screenshot('api_listing').to.be.captureSelector('.pageWrap,.expandDataTableFooterDrawer', function (page) {
+        expect.screenshot('api_listing').to.be.captureSelector('#content', function (page) {
             page.load("?" + generalParams + "&module=API&action=listAllAPI");
             page.evaluate(function () { // remove token_auth since it can change on each test run
                 $('span#token_auth>strong').text('dummytokenauth');
