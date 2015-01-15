@@ -419,6 +419,12 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
         }, done);
     });
 
+    it('should load the Settings > Mobile Messaging user page correctly', function (done) {
+        expect.screenshot('user_settings_mobilemessaging').to.be.captureSelector('#content', function (page) {
+            page.load("?" + generalParams + "&module=MobileMessaging&action=userSettings");
+        }, done);
+    });
+
     it('should load the themes admin page correctly', function (done) {
         expect.screenshot('admin_themes').to.be.captureSelector('#content', function (page) {
             page.load("?" + generalParams + "&module=CorePluginsAdmin&action=themes");
@@ -434,6 +440,12 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     it('should load the plugin settings admin page correctly', function (done) {
         expect.screenshot('admin_plugin_settings').to.be.captureSelector('#content', function (page) {
             page.load("?" + generalParams + "&module=CoreAdminHome&action=pluginSettings");
+        }, done);
+    });
+
+    it('should load the plugin settings user page correctly', function (done) {
+        expect.screenshot('user_plugin_settings').to.be.captureSelector('#content', function (page) {
+            page.load("?" + generalParams + "&module=CoreAdminHome&action=userPluginSettings");
         }, done);
     });
 
@@ -536,9 +548,9 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
 
     it('should load the feedback form when the feedback form link is clicked', function (done) {
         expect.screenshot('feedback_form').to.be.capture(function (page) {
-            page.evaluate(function () {
-                window.location.href = $('a#usermenu-feedback-index').attr('href'); // header is hidden in last screenshot
-            });
+
+            page.load("?" + generalParams + "&module=Feedback&action=index");
+
             page.evaluate(function () {
                 $('h2 span').each(function () {
                     if ($(this).text().indexOf("Piwik") !== -1) {
