@@ -521,7 +521,7 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     });
 
     it('should load the widgets listing page correctly', function (done) {
-        expect.screenshot('widgets_listing').to.be.captureSelector('.pageWrap,.expandDataTableFooterDrawer', function (page) {
+        expect.screenshot('widgets_listing').to.be.captureSelector('#content', function (page) {
             page.load("?" + generalParams + "&module=Widgetize&action=index");
             page.mouseMove('.widgetpreview-categorylist>li:contains(Visits Summary)');
             page.mouseMove('li[uniqueid=widgetVisitsSummarygetEvolutionGraphcolumnsArray]');
