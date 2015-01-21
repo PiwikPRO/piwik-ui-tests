@@ -1,2 +1,2 @@
-1000b41e60fc848fd2fcb89c296aa87074bfecce
-master
+fc39ca1d7e0f97ff5636019c36bc86705647fb25
+period-range-bug
