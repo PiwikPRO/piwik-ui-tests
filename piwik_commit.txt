@@ -1,2 +1,2 @@
-d8c2b55a6daf94ceb18e12394e8b84bc9ea55dc3
+10cc460fe71e180975b21c8cfba7de13d1fcd2be
 device-detector-3
