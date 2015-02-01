@@ -1,2 +1,2 @@
-89048aee3381408eeb218cf5aa5d35da4b904500
-device-detector-3
+e0ca25334816df642d859c2ad4e43517c9f996b4
+plugin-config
