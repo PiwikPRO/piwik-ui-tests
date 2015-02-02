@@ -1,2 +1,2 @@
-508d59f69143fc7eaef3649bfecd28140e643ced
-allow_disable_range_archiving
+f79e473fe2f37681d9c5bb71d21907a890bbf714
+removed-registry
