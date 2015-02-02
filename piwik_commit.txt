@@ -1,2 +1,2 @@
-dee7a0c3f32d557f2d7ff338badbf38bf9a38ddb
-master
+0e48dd9887cdb04b6442dce2136dab9cec7ea9ff
+device-detector-3
