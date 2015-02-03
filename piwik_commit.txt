@@ -1,2 +1,2 @@
-cdfd885f4121c8f8f964b4e1fc3cd1861fbfe253
-plugin-config
+2e7bf1e3bdccec0ffa8f8f5a2c4ecedfbb2a5703
+log-plugin
