@@ -1,5 +1,1 @@
-screenshot-diffs/*.png
-screenshot-diffs/diff*.html
-screenshot-diffs/jquery.js
-screenshot-diffs/resemble.js
 .idea/*
