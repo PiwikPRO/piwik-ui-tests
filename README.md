@@ -1,11 +1,9 @@
 ## Piwik User Interface Tests
 
-This repository contains user interface tests for Piwik which take screenshots of Piwik pages and controls.
+This repository contains images of captured screenshots that are taken automatically by our UI tests.
 
 To learn more, read [this](https://github.com/piwik/piwik/blob/master/tests/README.screenshots.md).
  
-Travis CI build:  [![Build Status](https://travis-ci.org/piwik/piwik-ui-tests.png?branch=master)](https://travis-ci.org/piwik/piwik-ui-tests)
-
 #### Deleting git history
 
 Git is not designed to store binary files, so storing images that are constantly changing will drastically increase the repository's size. To fix this we periodically delete all version history. To perform a purge, execute the following commands:
@@ -20,6 +18,6 @@ Git is not designed to store binary files, so storing images that are constantly
 Then update the submodule reference in Piwik:
 
     $ cd ..
-    $ git add UI
+    $ git add expected-ui-screenshots
     $ git commit -m "Updating UI submodule."
     $ git push origin master
